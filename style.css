@@ -1,0 +1,57 @@
+/* Settings */
+/*
+
+Font: Roboto
+
+Colors:
+  text: #000;
+  graytext: #444;
+  main: #f3f3f3;
+  secondary: #d9d9d9;
+  highlight: #ffec3d;
+  background: #222222;
+  error: #d14848;
+
+*/
+
+/* _________________ */
+/* Font import */
+/* _________________ */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+/* _________________ */
+/* Global settings */
+/* _________________ */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #000;
+}
+
+/* temporary mess */
+
+.container {
+  margin: 12px;
+  display: grid;
+  /* grid-template-columns: 10fr 40fr 40fr; */
+  width: 100vw;
+  height: 100vw;
+}
+
+.app {
+  width: 20px;
+  height: 100%;
+}
+
+.navigation-bar {
+  background-color: #d9d9d9;
+  height: 100%;
+}
