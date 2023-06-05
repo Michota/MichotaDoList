@@ -1,4 +1,9 @@
-/* TEMPORARY - #TODO: */
+/* #TODO: 
+  - Add an animation to hamburger-menu icon (in project and tasks)
+
+*/
+
+/* TEMPORARY - #FIXME: */
 
 .project[data-project-color="test"] {
   background-color: #d7dbe5;
@@ -57,6 +62,11 @@ Deafult: 9px
 /* Font import */
 /* _________________ */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+/* Material Symbols default */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
 
 /* _________________ */
 /* General settings */
@@ -118,13 +128,30 @@ li.icon {
   display: flex;
 }
 
+.checkbox {
+  position: relative;
+}
+
 .checkbox::before {
   font-size: 1.8rem;
   content: "circle";
+  display: block;
 }
 
-.checkbox:hover::before {
-  content: "check_circle";
+.checkbox::after {
+  position: absolute;
+  content: "done";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.checkbox:hover::after {
+  font-size: 1.2rem;
+  opacity: 1;
 }
 
 /* links */
@@ -136,7 +163,7 @@ a:visited {
 }
 a:link:hover,
 a:link:active {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 /* template classes */
@@ -240,8 +267,6 @@ a[href="#logout"]:hover {
   align-items: center;
 }
 
-.project-tasks {
-}
 /* Tasks */
 
 .task {
@@ -264,6 +289,7 @@ a[href="#logout"]:hover {
 }
 
 .subtasks {
+  font-size: 1.4rem;
   margin: 1.6rem;
   list-style-type: none;
 }
@@ -271,6 +297,8 @@ a[href="#logout"]:hover {
 .subtasks li {
   margin-top: 1rem;
   margin-left: 1.6rem;
+  display: flex;
+  align-items: center;
 }
 
 .subtask {
@@ -293,13 +321,24 @@ a[href="#logout"]:hover {
   display: flex;
   gap: 1rem;
   align-items: center;
+  opacity: 0.7;
 }
 
 .subtask-description {
-  opacity: 70%;
+  font-size: 1.2rem;
+  opacity: 0.7;
 }
 
-.subtasks-completed .btn::before {
-  content: "expand_more";
+.subtasks-completed .icon.btn::before {
+  content: "expand_circle_down";
+  font-size: 1.8rem;
+  display: block;
+  font-variation-settings: "FILL" 1;
+  transition: 0.2s;
+}
+
+.subtasks-completed:hover .icon.btn::before {
+  /* transform: rotate(360deg); */
+  font-variation-settings: "FILL" 0;
 }
 /* #TODO:: make tasks button animation */
