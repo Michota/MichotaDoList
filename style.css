@@ -98,6 +98,35 @@ small,
   display: none;
 }
 
+/* General elements settings */
+
+li.btn,
+li.icon {
+  list-style-type: none;
+}
+
+.icon {
+  cursor: default;
+}
+
+.btn,
+.checkbox {
+  cursor: pointer;
+}
+
+* > .checkbox {
+  display: flex;
+}
+
+.checkbox::before {
+  font-size: 1.8rem;
+  content: "circle";
+}
+
+.checkbox:hover::before {
+  content: "check_circle";
+}
+
 /* links */
 
 a:link,
@@ -177,29 +206,6 @@ a:link:active {
   gap: 1.2rem;
 }
 
-li.btn,
-li.icon {
-  list-style-type: none;
-}
-
-.btn,
-.checkbox {
-  cursor: pointer;
-}
-
-* > .checkbox {
-  display: flex;
-}
-
-.checkbox::before {
-  font-size: 1.8rem;
-  content: "circle";
-}
-
-.checkbox:hover::before {
-  content: "check_circle";
-}
-
 /* Navigation bar icons */
 
 a[href="#logout"] {
@@ -225,6 +231,7 @@ a[href="#logout"]:hover {
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
+  cursor: default;
 }
 
 .project-header .icon {
@@ -286,6 +293,10 @@ a[href="#logout"]:hover {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.subtask-description {
+  opacity: 70%;
 }
 
 .subtasks-completed .btn::before {
