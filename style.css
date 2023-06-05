@@ -290,7 +290,8 @@ a[href="#logout"]:hover {
 
 .subtasks {
   font-size: 1.4rem;
-  margin: 1.6rem;
+  margin: 1.2rem;
+  margin-top: 0;
   list-style-type: none;
 }
 
