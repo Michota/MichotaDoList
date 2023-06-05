@@ -4,89 +4,116 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- /// settings /// -->
-<!-- import symbols / icons -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- /// settings /// -->
+    <!-- import symbols / icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
 
-<!-- import styles -->
-<link rel="stylesheet" href="style.css">
-<!-- /// end of settings /// -->
+    <!-- import styles -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- /// end of settings /// -->
     <title>Onelist | Home page</title>
   </head>
   <body>
     <div class="container">
       <div class="app">
+
         <nav class="navigation-bar">
-          <ul class="options">
-            <li class="icon">
-              <span class="material-symbols-outlined">
-                home
-                </span>
-            </li>
-            <li class="icon">
-              <span class="material-symbols-outlined">
-                brightness_medium
-                </span>
-            </li>
-            <li class="icon">
-              <span class="material-symbols-outlined">
-                settings
-                </span>
-            </li>
-            <li class="icon">
-              <span class="material-symbols-outlined">
-                logout
-                </span>
-            </li>
-          </ul>
+          <div class="options-top">
+            <ul class="options btn">
+              <a href="#"><li class="icon btn material-symbols-outlined">
+home
+              </li></a>   
+            </ul>
+          </div>
+          <div class="options-bottom">
+            <ul class="options ">
+              <a href="#"><li class="icon material-symbols-outlined btn">
+                  brightness_medium
+              </li></a>
+              <a href="#"><li class="icon material-symbols-outlined btn">
+                  settings
+              </li></a>
+              <a href="#logout"><li class="icon material-symbols-outlined btn">
+                  logout
+              </li></a>
+            </ul>
+          </div>
+
+
+          
         </nav>
-        <div class="projects-view">
-          <div class="project-body">
-            <div class="project-header">
-              <div class="project-icon">
-                <span class="material-symbols-outlined">
-                  terminal
-                  </span>
+
+<div class="app-views">
+  
+  <div class="first-view view">
+    <div class="projects">
+      
+
+    <div class="project box-element" data-project-color="test">
+      <div class="project-header">
+        <div class="project-icon material-symbols-outlined icon">
+            terminal
+        </div>
+        <h3 class="project-title">Designing an To-Do app</h3>
+        <div class="project-options btn material-symbols-outlined icon"> menu
+        </div>
+      </div>
+      <div class="project-tasks">
+
+
+          <div class="task box-element">
+            <div class="task-header">
+              <div class="task-checkbox checkbox material-symbols-outlined">
               </div>
-              <div class="h2">Designing an To-Do app</div>
+              <p class="text-name-stask">Mechanics of Projects and Tasks</p>
             </div>
-            <div class="project-tasks">
 
+            <ul class="subtasks">
 
-                <div class="task">
-                  <div class="task-header">
-                    <div class="task-checkbox checkbox"></div>
-                    <p class="text-name-stask">Mechanics of Projects and Tasks</p>
-                  </div>
+              <li class="subtask">
+                <div class="subtask-checkbox material-symbols-outlined checkbox"></div>
+                <div class="subtask-info">
 
-                  <div class="subtasks">
+                  <p class="text-name-stask">First thing on a list has to be emphasized</p>
+                  <div class="subtasks-description">
+                </div>
+                  And if there is a description, the task should have bigger height, but the checkbox has to stay at the top.
+                </div>
+              </li>
 
-                    <div class="subtask">
-                      <div class="subtask-checkbox checkbox"></div>
-                      <p class="text-name-stask">First thing on a list has to be emphasized</p>
-                      <div class="subtasks-description">
-                        And if there is a description, the task should have bigger height, but the checkbox has to stay at the top.
-                      </div>
-                    </div>
+              <li class="subtask">
+                <div class="subtask-checkbox material-symbols-outlined checkbox"></div>
+                <div class="subtask-info">
 
-                    <div class="subtask">
-                      <div class="subtask-checkbox checkbox"></div>
-                      <p class="text-name-stask">Things marked as done are stored in “Done” section - dropdown menu </p>
-                      <div class="subtasks-description">
-                      </div>
-                    </div>
+                  <p class="text-name-stask">Things marked as done are stored in “Done” section - dropdown menu </p>
+                  <div class="subtasks-description">
+                </div>
+                </div>
+              </li>
 
-                    <div class="subtasks-completed">
-                      <p class="text-name-stask">Completed Sub-Tasks</p>
-                    </div>
-                  </div>
-                  
+              <li class="subtasks-completed btn">
+                <div class="icon material-symbols-outlined btn"></div>
+                <p class="text-name-stask">Completed Sub-Tasks</p>
+                </li>
+              </ul>
+            
 
-              </div>
-            </div>
           </div>
         </div>
-        <div class="calendar-view"></div>
+      </div>
+    </div>
+  </div>
+  <div class="second-view view hidden">
+    <div class="calendar">calendar xD</div>
+  </div>
+</div>
+
+
+
+
       </div>
       </div>
     </div>
