@@ -47,23 +47,38 @@ home
   
   <div class="first-view view">
     <div class="projects">
+
+      <div class="project-new-btn add-btn btn box-element">
+        <div class="icon material-symbols-outlined">add_to_photos</div>
+        <p>Create new Project</p>
+      </div>
       
 
-    <div class="project box-element" data-project-color="test">
+    <div class="project box-element" style="background-color: #d7dbe5;">
       <div class="project-header">
         <div class="project-icon material-symbols-outlined icon">
             terminal
         </div>
         <h3 class="project-title">Designing an To-Do app</h3>
-        <div class="project-options btn material-symbols-outlined icon"> menu
-        </div>
+        <div class="project-options btn material-symbols-outlined icon"> menu</div>
       </div>
+
+      <div class="task-new-btn add-btn btn box-element">
+        <div class="icon material-symbols-outlined">add_to_photos</div>
+        <p>Create new task</p>
+      </div>
+
       <div class="project-tasks">
           <div class="task box-element">
-            <div class="task-header">
-              <div class="task-checkbox checkbox material-symbols-outlined">
-              </div>
+            <div class="task-header" style="background-color: darkkhaki;">
+
+              <div class="task-checkbox checkbox material-symbols-outlined"></div>
               <p class="text-name-stask">Mechanics of Projects and Tasks</p>
+              
+              <ul class="task-options">
+                <li class="btn icon task-option task-add-subtask material-symbols-outlined">add_task</li>
+                <li class="btn icon task-option task-remove-mode material-symbols-outlined">delete</li>
+              </ul>
             </div>
 
             <ul class="subtasks">
@@ -99,6 +114,7 @@ home
           </div>
         </div>
       </div>
+      
     </div>
   </div>
   <div class="second-view view hidden">

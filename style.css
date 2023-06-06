@@ -5,10 +5,6 @@
 
 /* TEMPORARY - #FIXME: */
 
-.project[data-project-color="test"] {
-  background-color: #d7dbe5;
-}
-
 /* Settings */
 /* 
 --- 01 TYPOGRAPHY SYSTEM
@@ -116,11 +112,14 @@ li.icon {
 }
 
 .icon {
+  user-select: none;
   cursor: default;
+  font-size: calc(1.5em);
 }
 
 .btn,
 .checkbox {
+  user-select: none;
   cursor: pointer;
 }
 
@@ -231,6 +230,7 @@ a:link:active {
   flex-direction: column;
   align-items: center;
   gap: 1.2rem;
+  font-size: 1.6rem;
 }
 
 /* Navigation bar icons */
@@ -249,7 +249,11 @@ a[href="#logout"]:hover {
 
 /* Project */
 
-.project {
+.add-btn {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1.4rem;
+  align-items: center;
 }
 
 .project-header {
@@ -277,9 +281,10 @@ a[href="#logout"]:hover {
 
 .task-header {
   padding: 0.4rem;
-  background-color: darkkhaki;
+
   display: flex;
   align-items: center;
+  padding-right: 2rem;
   gap: 1.4rem;
   font-size: 1.4rem;
 }
@@ -287,6 +292,14 @@ a[href="#logout"]:hover {
 .task-header * {
   margin-left: 1rem;
 }
+
+.task-options {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+/* subtasks */
 
 .subtasks {
   font-size: 1.4rem;
