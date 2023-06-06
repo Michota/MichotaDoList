@@ -355,4 +355,25 @@ a[href="#logout"]:hover {
   /* transform: rotate(360deg); */
   font-variation-settings: "FILL" 0;
 }
+
+.subtask-completed {
+  display: flex;
+  transition: 0.2s;
+  gap: 1rem;
+  opacity: 0.7;
+}
+
+.subtask-completed .checkbox::before {
+  content: "done";
+}
+
+.subtask-completed:hover .checkbox::after {
+  content: "close";
+  font-size: 1.8rem;
+}
+
+.subtask-completed:hover .checkbox::before {
+  opacity: 0;
+}
+
 /* #TODO:: make tasks button animation */
