@@ -59,17 +59,21 @@ Deafult: 9px
 
 /* Coolors */
 :root {
-  --brand: #411561;
+  --brand-color: 65, 21, 96;
+  --brand: rgba(var(--brand-color),0.5);
   --background: #181b25;
   --normal: #fff;
-  --highlight: #2cc7b8;
+  --highlight: rgb(44, 199, 184);
   /* glows etc */
   --neon-box: 0 0 var(--glow-rate) 0px var(--highlight);
   --neon-text: var(--highlight) 0 0 var(--glow-rate);
+  --drop-shadow: rgba(0, 0, 0, 0.3) 0 5px 5px;
   /* --- */
-  --logout: #ff5959;
-  /* glows */
+  --logout: rgb(255, 89, 89);
+  /* effects */
   --glow-rate: 10px;
+  --glass: background-color: rgba(255, 255, 255, 0.05);
+  /* glows */
 }
 
 /* _________________ */
@@ -122,6 +126,16 @@ small,
 .hidden {
   display: none;
 }
+/* _________________ */
+/* General Elements Settings  */
+/* _________________ */
+
+/* Grid and Flex classes */
+
+.flex-grow {
+flex: 1;
+}
+
 
 /* Buttons */
 
@@ -130,10 +144,27 @@ small,
   user-select: none;
 }
 
-.btn:active,
-.btn:hover {
-  color: var(--highlight);
-  text-shadow: var(--neon-text);
+.btn.highlight {
+  background-color: var(--highlight);
+}
+
+/* Buttons with Icons */
+
+.full-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  width: fit-content;
+  padding: 1rem 2rem;
+  border-radius: 1.2rem;
+  box-shadow: var(--drop-shadow);
+  font-size: 1.4rem;
+}
+
+.full-button .icon {
+  font-size: 1.2em;
 }
 
 /* //////////////// */
@@ -186,8 +217,14 @@ small,
 
 /* Sidebar buttons */
 
-.logout-btn:hover,
-.logout-btn:active {
+.sidebar .btn:active,
+.sidebar .btn:hover {
+  color: var(--highlight);
+  text-shadow: var(--neon-text);
+}
+
+.sidebar .logout-btn:hover,
+.sidebar .logout-btn:active {
   color: var(--logout);
   text-shadow: 0 0 var(--glow-rate) var(--logout);
 }
@@ -207,4 +244,45 @@ small,
 
 .secondary-panel {
   margin: 2rem;
+}
+
+
+/* Projects Panel */
+
+.option-buttons {
+  display: flex;
+  gap: 1.6rem;
+  margin: 2rem;  
+  justify-content: center;
+}
+
+.project {
+  background-color: var(--brand);
+  padding: 2rem;
+  padding-top: 1rem;
+  margin: 2rem;
+  border-radius: 1.2rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+}
+
+.project-tasks {
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+.task {
+display: grid;
+gap: 1.6rem;
+grid-template-columns: min-content 1fr min-content;
+align-items: center;
+font-size: 1.4rem;
+}
+
+.task .icon {
+  font-size: 1.4em;
 }
