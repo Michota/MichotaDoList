@@ -141,7 +141,8 @@ small,
 /* //////////////// */
 
 .app {
-  display: flex;
+  display: grid;
+  grid-template-columns: min-content 1fr 1fr;
 }
 
 /* //////////////// */
@@ -195,15 +196,15 @@ small,
 /* Panels */
 /* //////////////// */
 
-.panels {
-  display: flex;
-  gap: 2.4rem;
-  width: 100%;
+.panel {
+  background-color: var(--background);
 }
 
-.panel {
+.main-panel {
+  margin: 0;
+  border-radius: 0 1.8rem 1.8rem 0;
+}
+
+.secondary-panel {
   margin: 2rem;
-  border-radius: 12px;
-  width: 50%;
-  background-color: red;
 }
