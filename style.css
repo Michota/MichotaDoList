@@ -39,7 +39,6 @@ Paragraph deafult 1.15
 - Accents:
 
 - Greys: 
-#222222
 
 - Special:
   logout #FF5959;
@@ -53,6 +52,14 @@ Deafult: 9px
 --- 07 Whitespace
 
 */
+
+/* Coolors */
+:root {
+  --brand: #411561;
+  --background: #181b25;
+  --normal: #fff;
+  --highlight: #2cc7b8;
+}
 
 /* _________________ */
 /* Font import */
@@ -78,7 +85,8 @@ Deafult: 9px
 
 body {
   font-family: "Roboto", sans-serif;
-  color: #000;
+  color: #fff;
+  background-color: #000;
 }
 
 html {
@@ -104,276 +112,47 @@ small,
   display: none;
 }
 
-/* General elements settings */
+/* Buttons */
 
-li.btn,
-li.icon {
-  list-style-type: none;
-}
-
-.icon {
-  user-select: none;
-  cursor: default;
-  font-size: calc(1.5em);
-}
-
-.btn,
-.checkbox {
-  user-select: none;
+.btn {
   cursor: pointer;
+  user-select: none;
 }
 
-* > .checkbox {
-  display: flex;
+.btn:active,
+.btn:hover {
+  color: var(--highlight);
 }
 
-.checkbox {
-  position: relative;
-}
+/* Sidebar */
 
-.checkbox::before {
-  font-size: 1.8rem;
-  content: "circle";
-  display: block;
-}
-
-.checkbox::after {
-  position: absolute;
-  content: "done";
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1rem;
-  opacity: 0;
-  transition: 0.2s;
-}
-
-.checkbox:hover::after {
-  font-size: 1.2rem;
-  opacity: 1;
-}
-
-/* links */
-
-a:link,
-a:visited {
-  cursor: pointer;
-  color: inherit;
-}
-a:link:hover,
-a:link:active {
-  opacity: 0.7;
-}
-
-/* template classes */
-
-.box-element {
-  margin: 1rem;
-  padding: 1rem;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-}
-
-/* container and app */
-
-.container {
-  display: grid;
-  /* grid-template-columns: 10fr 40fr 40fr; */
-  width: 100vw;
-  height: 100vh;
-  background-color: #222222;
-}
-
-.app {
-  padding: 2.4rem;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-.app-views {
-  display: grid;
-  grid-template-columns: 50fr 50fr;
-  gap: 2.4rem;
-}
-
-/* views */
-.view {
-  background-color: #f3f3f3;
-  border-radius: 12px;
-}
-
-.first-view {
-  border-radius: 0 12px 12px 0;
-}
-
-.second-view {
-}
-
-/* ---------- Navigation ---------- */
-
-/* Navigation bar */
-
-.navigation-bar {
-  background-color: #d9d9d9;
-  height: 100%;
+.sidebar {
+  background-color: var(--background);
   width: 4.8rem;
-  border-radius: 12px 0 0 12px;
+  height: 100vh;
+  text-align: center;
+}
+
+.sidebar-icons {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.navigation-bar .options {
-  margin: 1.6rem;
+.sidebar-icons-bottom,
+.sidebar-icons-top {
+  height: 50%;
+}
+
+.sidebar-icons-bottom {
+  background-color: red;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-  font-size: 1.6rem;
-}
-
-/* Navigation bar icons */
-
-a[href="#logout"] {
-  transition: 200ms;
-}
-
-a[href="#logout"]:hover {
-  color: #ff5959;
-}
-
-/* ---------- Projects Panel ---------- */
-
-/* Panel */
-
-/* Project */
-
-.add-btn {
-  display: flex;
-  gap: 1.2rem;
-  font-size: 1.4rem;
-  align-items: center;
-}
-
-.project-header {
-  height: 2.4rem;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 1.4rem;
-  cursor: default;
 }
 
-.project-header .icon {
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
+.test {
 }
-
-/* Tasks */
-
-.task {
-  background-color: rgba(255, 255, 255, 0.25);
-  padding: 0;
-  overflow: hidden;
-}
-
-.task-header {
-  padding: 0.4rem;
-
-  display: flex;
-  align-items: center;
-  padding-right: 2rem;
-  gap: 1.4rem;
-  font-size: 1.4rem;
-}
-
-.task-header * {
-  margin-left: 1rem;
-}
-
-.task-options {
-  margin-left: auto;
-  display: flex;
-  flex-direction: row;
-}
-
-/* subtasks */
-
-.subtasks {
-  font-size: 1.4rem;
-  margin: 1.2rem;
-  margin-top: 0;
-  list-style-type: none;
-}
-
-.subtasks li {
-  margin-top: 1rem;
-  margin-left: 1.6rem;
-  display: flex;
-  align-items: center;
-}
-
-.subtask {
-  display: grid;
-  grid-template-columns: min-content auto;
-  gap: 1rem;
-}
-
-.subtask .checkbox {
-  width: fit-content;
-  font-size: 1.6rem;
-}
-
-.subtask-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.subtasks-completed {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  opacity: 0.7;
-}
-
-.subtask-description {
-  font-size: 1.2rem;
-  opacity: 0.7;
-}
-
-.subtasks-completed .icon.btn::before {
-  content: "expand_circle_down";
-  font-size: 1.8rem;
-  display: block;
-  font-variation-settings: "FILL" 1;
-  transition: 0.2s;
-}
-
-.subtasks-completed:hover .icon.btn::before {
-  /* transform: rotate(360deg); */
-  font-variation-settings: "FILL" 0;
-}
-
-.subtask-completed {
-  display: flex;
-  transition: 0.2s;
-  gap: 1rem;
-  opacity: 0.7;
-}
-
-.subtask-completed .checkbox::before {
-  content: "done";
-}
-
-.subtask-completed:hover .checkbox::after {
-  content: "close";
-  font-size: 1.8rem;
-}
-
-.subtask-completed:hover .checkbox::before {
-  opacity: 0;
-}
-
-/* #TODO:: make tasks button animation */
