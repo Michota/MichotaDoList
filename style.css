@@ -137,6 +137,14 @@ small,
 }
 
 /* //////////////// */
+/* App overall */
+/* //////////////// */
+
+.app {
+  display: flex;
+}
+
+/* //////////////// */
 /* Sidebar */
 /* //////////////// */
 
@@ -181,4 +189,21 @@ small,
 .logout-btn:active {
   color: var(--logout);
   text-shadow: 0 0 var(--glow-rate) var(--logout);
+}
+
+/* //////////////// */
+/* Panels */
+/* //////////////// */
+
+.panels {
+  display: flex;
+  gap: 2.4rem;
+  width: 100%;
+}
+
+.panel {
+  margin: 2rem;
+  border-radius: 12px;
+  width: 50%;
+  background-color: red;
 }
