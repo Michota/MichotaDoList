@@ -130,6 +130,55 @@ small,
 /* General Elements Settings  */
 /* _________________ */
 
+
+.checkbox {
+  font-size: 1em;
+  scale: 1.5;
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.checkbox:hover {
+  opacity: 1;
+  color: transparent;
+}
+
+.checkbox:hover::after {
+  color: var(--normal);
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "check_circle";
+  font-size: 1em;
+}
+
+.checkbox.marked {
+  opacity: 1;
+  color: var(--highlight);
+  position: relative;
+  visibility: hidden;
+}
+
+.checkbox.marked::after {
+  opacity: 0.8;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "check_circle";
+  font-size: 1em;
+}
+
+.checkbox.marked:hover::after {
+  content: "circle";
+}
+
+.icon {
+  user-select: none;
+}
+
 /* Grid and Flex classes */
 
 .flex-grow {
@@ -280,9 +329,8 @@ display: grid;
 gap: 1.6rem;
 grid-template-columns: min-content 1fr min-content;
 align-items: center;
-font-size: 1.4rem;
+font-size: 1.6rem;
 }
 
-.task .icon {
-  font-size: 1.4em;
-}
+
+
