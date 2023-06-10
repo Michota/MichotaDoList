@@ -63,7 +63,8 @@ Deafult: 9px
   --brand: rgba(var(--brand-color),0.5);
   --background: #181b25;
   --normal: #fff;
-  --highlight: rgb(44, 199, 184);
+  --highlight-color: 44, 199, 184;
+  --highlight: rgba(var(--highlight-color), 1);
   /* glows etc */
   --neon-box: 0 0 var(--glow-rate) 0px var(--highlight);
   --neon-text: var(--highlight) 0 0 var(--glow-rate);
@@ -200,7 +201,7 @@ flex: 1;
 
 button {
   cursor: pointer;
-  background-color: inherit;
+  background-color: transparent;
   border: inherit;
   color: inherit;
 }
@@ -336,10 +337,18 @@ button {
 
 .task {
 display: grid;
+padding: 0 1rem;
 gap: 1.6rem;
 grid-template-columns: min-content 1fr min-content;
 align-items: center;
 font-size: 1.6rem;
+border-radius: 1.2rem;
+transition: 0.2s;
+}
+
+.task:hover, .task:active {
+  background-color: rgba(var(--highlight-color), 0.5);
+  box-shadow: var(--neon-box);
 }
 
 
