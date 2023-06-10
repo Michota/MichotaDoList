@@ -21,30 +21,30 @@
       <nav class="sidebar">
         <div class="sidebar-icons">
           <div class="sidebar-icons-top">
-            <div class="btn material-symbols-outlined active-element">home</div>
+            <a class="btn material-symbols-outlined active-element"> home </a>
           </div>
           <div class="sidebar-icons-bottom">
-            <div class="btn material-symbols-outlined">brightness_4</div>
-            <div class="btn material-symbols-outlined">settings</div>
-            <div class="btn material-symbols-outlined logout-btn">logout</div>
+            <a class="btn material-symbols-outlined">brightness_4</a>
+            <a class="btn material-symbols-outlined">settings</a>
+            <a class="btn material-symbols-outlined logout-btn"> logout </a>
           </div>
         </div>
       </nav>
       <div class="panel main-panel">
         <div class="projects-panel">
           <div class="option-buttons">
-            <a class="btn full-button button_select_one_thing highlight">
+            <button class="btn full-button button_select_one_thing highlight">
               <div class="icon material-symbols-outlined">saved_search</div>
               Select the One-Thing
-            </a>
-            <a class="btn full-button button_add_new_task">
+            </button>
+            <button class="btn full-button button_add_new_task">
               <div class="icon material-symbols-outlined">add_task</div>
               Add new Task
-            </a>
-            <a class="btn full-button button_start_new_project">
+            </button>
+            <button class="btn full-button button_start_new_project">
               <div class="icon material-symbols-outlined">add_to_photos</div>
               Start new Project
-            </a>
+            </button>
           </div>
 
           <div class="projects-container">
@@ -54,20 +54,44 @@
                   terminal
                 </div>
                 <div class="project-name">Project Name</div>
-                <div class="project-menu icon material-symbols-outlined">
+                <button class="project-menu icon material-symbols-outlined">
                   menu
-                </div>
+                </button>
               </h2>
 
               <ul class="project-tasks">
                 <li class="task">
-                  <div class="checkbox material-symbols-outlined">circle</div>
+                  <button class="checkbox material-symbols-outlined">
+                    circle
+                  </button>
                   <div class="task-text">Task ABC XYZ</div>
-                  <div class="task-delete btn icon material-symbols-outlined">
+                  <button
+                    class="task-delete btn icon material-symbols-outlined"
+                  >
                     delete
-                  </div>
+                  </button>
                 </li>
               </ul>
+
+              <div class="project-tasks-completed">
+                <button class="full-button btn-completed-task">
+                  <div class="icon material-symbols-outlined">expand_more</div>
+                  Completed Tasks
+                </button>
+                <ul class="project-tasks-completed-list">
+                  <li class="task completed">
+                    <button class="checkbox marked material-symbols-outlined">
+                      circle
+                    </button>
+                    <div class="task-text">Task ABC XYZ</div>
+                    <button
+                      class="task-delete btn icon material-symbols-outlined"
+                    >
+                      delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

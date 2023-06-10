@@ -173,6 +173,7 @@ small,
 
 .checkbox.marked:hover::after {
   content: "circle";
+  color: var(--highlight)
 }
 
 .icon {
@@ -196,6 +197,14 @@ flex: 1;
 .btn.highlight {
   background-color: var(--highlight);
 }
+
+button {
+  cursor: pointer;
+  background-color: inherit;
+  border: inherit;
+  color: inherit;
+}
+
 
 /* Buttons with Icons */
 
@@ -319,9 +328,10 @@ flex: 1;
   font-size: 1.8rem;
 }
 
-.project-tasks {
+.project-tasks, .project-tasks-completed {
   margin-top: 2rem;
   padding: 0 2rem;
+  border-radius: 1.2rem;
 }
 
 .task {
@@ -333,4 +343,22 @@ font-size: 1.6rem;
 }
 
 
+.project-tasks-completed {
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0 1rem 0 2rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
 
+.btn-completed-task {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-completed-task .icon {
+  scale: 1.5;
+}
