@@ -6,17 +6,18 @@ const controlNewProject = async function () {
   try {
     const projectName = prompt("Name new project");
     console.log(projectName);
+    if (projectName === "") throw "nie dziala";
     const markup = newProject.createHTML(projectName);
     newProject.renderHTML(markup);
   } catch (error) {
-    console.error(error);
+    newProject.renderError(error);
   }
 };
 
 console.log("test");
 
 const init = function () {
-  controlNewProject();
+  // controlNewProject();
 };
 
 init();

@@ -7,7 +7,7 @@ export default class View {
 
   renderHTML(data) {
     this._data = data;
-    this.clearParent();
+    // this.clearParent();
     this._parentElement.innerHTML = data;
   }
 

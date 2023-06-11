@@ -4,8 +4,8 @@ class newProject extends View {
   _data;
   _parentElement = document.querySelector(".projects-container");
 
-  createHTML(projectName) {
-    this._data = projectName;
+  generateMarkup(markup) {
+    this._data = markup;
     return `
     <div class="project">
     <h2 class="project-header">
@@ -38,7 +38,7 @@ class newProject extends View {
       <!-- /// Completed Tasks List -->
     </div>
     <!-- /// Completed Tasks Container -->
-  </div>xd
+  </div>
     `;
   }
 }
