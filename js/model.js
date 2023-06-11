@@ -8,17 +8,23 @@ export const state = {
   projectsArr: [],
 };
 
+export const test = function () {};
+
 // Create project object
 export const createProject = function (nameInput, iconInput = "terminal") {
-  const { project } = state;
-  return {
+  const project = {
     id: createId(),
     // TODO: change 'terminal' to icon selected by user
     icon: iconInput,
     projectName: nameInput,
     tasks: [],
   };
+  // Save project to array
+  state.projectsArr.push(project);
+  return project;
 };
+
+// Add Project to projectsArr
 
 // Create new ID
 const createId = function (arrToCheck = state.projectsArr) {

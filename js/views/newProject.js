@@ -4,15 +4,28 @@ class newProject extends View {
   _data;
   _parentElement = document.querySelector(".projects-container");
 
-  generateMarkup(markup) {
-    this._data = markup;
+  addHandler(handler) {
+    // TODO: Make this in VIEW
+    const buttons = document.querySelector(".option-buttons");
+
+    buttons.addEventListener("click", function (e) {
+      e.preventDefault();
+      const btn = e.target.closest(".button_start_new_project");
+      if (!btn) return;
+      handler();
+    });
+  }
+
+  generateMarkup(data) {
+    // this.data =
+    this._data = data;
     return `
     <div class="project">
     <h2 class="project-header">
       <div class="icon project-icon material-symbols-outlined">
-        terminal
+      ${this._data.icon}
       </div>
-      <div class="project-name">${this._data}</div>
+      <div class="project-name">${this._data.projectName}</div>
       <button class="project-menu icon material-symbols-outlined">
         menu
       </button>

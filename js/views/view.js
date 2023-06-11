@@ -7,8 +7,12 @@ export default class View {
 
   renderHTML(data) {
     this._data = data;
-    // this.clearParent();
     this._parentElement.innerHTML = data;
+  }
+
+  addElementHTML(data) {
+    this.data = data;
+    this._parentElement.insertAdjacentHTML("beforeend", data);
   }
 
   renderError(error) {
