@@ -1,6 +1,6 @@
 import View from "./view.js";
 
-class newProject extends View {
+class NewProject extends View {
   _data;
   _parentElement = document.querySelector(".projects-container");
 
@@ -20,40 +20,68 @@ class newProject extends View {
     // this.data =
     this._data = data;
     return `
-    <div class="project">
-    <h2 class="project-header">
-      <div class="icon project-icon material-symbols-outlined">
-      ${this._data.icon}
-      </div>
-      <div class="project-name">${this._data.projectName}</div>
-      <button class="project-menu icon material-symbols-outlined">
-        menu
-      </button>
-    </h2>
+<div class="project">
+              <h2 class="project-header">
+                <div class="icon project-icon material-symbols-outlined">
+                  terminal
+                </div>
+                <div contenteditable="true" class="project-name"
+                  >Project Name xd</div
+                >
+                <button class="project-menu icon material-symbols-outlined">
+                  menu
+                </button>
+              </h2>
 
-    <!-- Tasks list -->
-    <ul class="project-tasks">
-      <p>No tasks have been added yet.</p>
-      <!-- Task -->
+              <ul class="project-tasks">
+                <button
+                  class="btn full-button btn-add-new-task button_add_new_task"
+                >
+                  <div class="icon material-symbols-outlined">add</div>
+                  Add new Task
+                </button>
+                <li class="task">
+                  <button class="checkbox material-symbols-outlined">
+                    circle
+                  </button>
+                  <div class="task-text" contenteditable="true">
+                    Task ABC XYZ
+                  </div>
+                  <button
+                    class="task-delete btn icon material-symbols-outlined"
+                  >
+                    delete
+                  </button>
+                </li>
+              </ul>
 
-      <!-- /// Task -->
-    </ul>
-    <!-- /// Tasks list -->
-
-    <!-- Completed Tasks List -->
-    <div class="project-tasks-completed hidden">
-      <button class="full-button btn-completed-task">
-        <div class="icon material-symbols-outlined">expand_more</div>
-        Completed Tasks
-      </button>
-      <!-- Completed Tasks List -->
-      <ul class="project-tasks-completed-list"></ul>
-      <!-- /// Completed Tasks List -->
-    </div>
-    <!-- /// Completed Tasks Container -->
-  </div>
+              <div class="project-tasks-completed show-content">
+                <button class="full-button btn-completed-task">
+                  <div class="icon material-symbols-outlined">expand_more</div>
+                  Completed Tasks
+                </button>
+                <ul class="project-tasks-completed-list">
+                  <li class="task completed">
+                    <button class="checkbox marked material-symbols-outlined">
+                      circle
+                    </button>
+                    <div class="task-text">Task ABC XYZ</div>
+                    <button
+                      class="task-delete btn icon material-symbols-outlined"
+                    >
+                      delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
     `;
+  }
+
+  makeItEditable() {
+    const projects = [...document.querySelectorAll(".project")];
+    // console.log(projects);
   }
 }
 
-export default new newProject();
+export default new NewProject();
