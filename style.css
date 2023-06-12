@@ -339,9 +339,6 @@ button {
   gap: 1rem;
 }
 
-.project-tasks-completed, {
-}
-
 .show-content > :first-child{
   margin-top: 1rem;
 }
