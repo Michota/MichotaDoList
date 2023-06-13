@@ -240,6 +240,7 @@ button {
 .app {
   display: grid;
   grid-template-columns: min-content 1fr 1fr;
+  height: 100vh;
 }
 
 /* //////////////// */
@@ -301,6 +302,7 @@ button {
 
 .panel {
   background-color: var(--background);
+  overflow-y: auto;
 }
 
 .main-panel {
