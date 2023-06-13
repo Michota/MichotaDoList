@@ -356,6 +356,13 @@ button {
   opacity: 0;
 } */
 
+.project-name[contentEditable=true]:empty:before {
+  content: "Project with no name";
+  opacity: 0.5;
+}
+
+
+
 .project-tasks, .project-tasks-completed {
   margin-top: 2rem;
   padding: 0 2rem;

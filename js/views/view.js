@@ -19,17 +19,31 @@ export default class View {
     return document.querySelector(`[data-id="${element.data.id}"]`);
   }
 
+  focusElement(element, specified) {
+    const partOfElement = element.querySelector(specified);
+    if (partOfElement) {
+      partOfElement.focus();
+      const text = partOfElement.textContent;
+      partOfElement.textContent = "";
+      partOfElement.textContent = text;
+    } else {
+      element.focus();
+    }
+  }
+
   renderError(error) {
     console.error(error);
   }
 
   editInput(inputField) {
-    inputField.addEventListener("keydown", function (ev) {
+    inputField.addEventListener("keydown", async function (ev) {
       if (ev.code === "Enter") {
         ev.preventDefault(); // Disable line-break
         ev.target.blur(); // Lose focus
-        const output = ev.target.textContent;
+        const output = await ev.target;
         // TODO: send output to model.js so it can update and save project info
+        console.log(output);
+        return output;
       }
     });
   }

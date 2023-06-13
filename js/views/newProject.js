@@ -17,7 +17,6 @@ class NewProject extends View {
   }
 
   generateMarkup(recivedData) {
-    console.log(recivedData);
     this._data = recivedData;
     return {
       data: this._data,

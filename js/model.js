@@ -9,10 +9,7 @@ export const state = {
 };
 
 // Create project object
-export const createProject = function (
-  nameInput = "Project Name",
-  iconInput = "terminal"
-) {
+export const createProject = function (nameInput = "", iconInput = "terminal") {
   const project = {
     id: createId(),
     // TODO: change 'terminal' to icon selected by user
@@ -24,8 +21,6 @@ export const createProject = function (
   state.projectsArr.push(project);
   return project;
 };
-
-// Add Project to projectsArr
 
 // Create new ID
 const createId = function (arrToCheck = state.projectsArr) {
@@ -58,6 +53,13 @@ const checkIdUnique = function (arr, id) {
   const iDs = arr.map((el) => el.id);
   return iDs.find((el) => el === id) ? false : true;
   // if ID is unique, then return TRUE
+};
+
+// Update Project data
+
+export const updateProject = function (project) {
+  const projectToEdit = state.projectsArr.find((pr) => pr.id === project.id);
+  console.log(projectToEdit);
 };
 
 // TEST REASONS ONLY

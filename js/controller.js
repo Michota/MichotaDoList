@@ -4,8 +4,21 @@ import NewProject from "./views/newProject.js";
 
 const controlNewProject = function () {
   const elementHTML = NewProject.generateMarkup(model.createProject());
-  NewProject.addElementHTML(elementHTML);
-  console.log(elementHTML);
+  NewProject.focusElement(
+    NewProject.addElementHTML(elementHTML),
+    ".project-name"
+  );
+};
+
+const controlUpdateProject = async function () {
+  try {
+    const test = NewProject.selectElement(
+      ".projects-container",
+      ".project-name"
+    );
+
+    model.updateProject();
+  } catch {}
 };
 
 // const controlEditProject = function () {
@@ -20,7 +33,6 @@ const controlNewProject = function () {
 
 const init = function () {
   NewProject.addHandler(controlNewProject);
-  NewProject.selectElement(".projects-container", ".project-name");
 };
 
 document.querySelector(".logout-btn").addEventListener("click", model.devFun);
