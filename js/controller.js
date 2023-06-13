@@ -3,8 +3,9 @@ import * as model from "./model.js";
 import NewProject from "./views/newProject.js";
 
 const controlNewProject = function () {
-  const markup = NewProject.generateMarkup(model.createProject("test2023"));
-  NewProject.addElementHTML(markup);
+  const elementHTML = NewProject.generateMarkup(model.createProject());
+  NewProject.addElementHTML(elementHTML);
+  console.log(elementHTML);
 };
 
 // const controlEditProject = function () {
@@ -22,7 +23,9 @@ const init = function () {
   NewProject.selectElement(".projects-container", ".project-name");
 };
 
+document.querySelector(".logout-btn").addEventListener("click", model.devFun);
+
 init();
 
-NewProject.editInput(".project-name");
-NewProject.makeItEditable();
+// NewProject.editInput(".project-name");
+// NewProject.makeItEditable();

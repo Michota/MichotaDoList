@@ -8,10 +8,11 @@ export const state = {
   projectsArr: [],
 };
 
-export const test = function () {};
-
 // Create project object
-export const createProject = function (nameInput, iconInput = "terminal") {
+export const createProject = function (
+  nameInput = "Project Name",
+  iconInput = "terminal"
+) {
   const project = {
     id: createId(),
     // TODO: change 'terminal' to icon selected by user
@@ -59,4 +60,8 @@ const checkIdUnique = function (arr, id) {
   // if ID is unique, then return TRUE
 };
 
-// changes
+// TEST REASONS ONLY
+
+export const devFun = function () {
+  console.log(state);
+};

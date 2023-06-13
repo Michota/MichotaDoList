@@ -16,17 +16,19 @@ class NewProject extends View {
     });
   }
 
-  generateMarkup(data) {
-    // this.data =
-    this._data = data;
-    return `
-<div class="project">
+  generateMarkup(recivedData) {
+    console.log(recivedData);
+    this._data = recivedData;
+    return {
+      data: this._data,
+      markup: `
+      <div class="project" data-id="${recivedData.id}">
               <h2 class="project-header">
                 <div class="icon project-icon material-symbols-outlined">
-                  terminal
+                  ${recivedData.icon}
                 </div>
                 <div contenteditable="true" class="project-name"
-                  >Project Name xd</div
+                  >${recivedData.projectName}</div
                 >
                 <button class="project-menu icon material-symbols-outlined">
                   menu
@@ -75,13 +77,14 @@ class NewProject extends View {
                 </ul>
               </div>
             </div>
-    `;
+      `,
+    };
   }
 
-  makeItEditable() {
-    const projects = [...document.querySelectorAll(".project")];
-    // console.log(projects);
-  }
+  // makeItEditable() {
+  //   const projects = [...document.querySelectorAll(".project")];
+  //   // console.log(projects);
+  // }
 }
 
 export default new NewProject();
