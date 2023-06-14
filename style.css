@@ -1,3 +1,9 @@
+/* _________________ */
+/* Font import */
+/* _________________ */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+
 /* #TODO: 
   - Add an animation to hamburger-menu icon (in project and tasks)
 
@@ -77,10 +83,6 @@ Deafult: 9px
   /* glows */
 }
 
-/* _________________ */
-/* Font import */
-/* _________________ */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 /* Material Symbols default */
 .material-symbols-outlined {
