@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const state = {
   project: {
     id: 0,
@@ -5,6 +7,7 @@ export const state = {
     icon: "",
     tasks: [],
   },
+  task: {},
   projectsArr: [],
 };
 
@@ -19,6 +22,7 @@ export const createProject = function (nameInput = "", iconInput = "terminal") {
   };
   // Save project to array
   state.projectsArr.push(project);
+  // checkState();
   return project;
 };
 
@@ -55,15 +59,41 @@ const checkIdUnique = function (arr, id) {
   // if ID is unique, then return TRUE
 };
 
+const elementToObject = function (element, type) {
+  if (type === "project") {
+    const el = element.closest(".project");
+
+    const projectObj = {
+      id: Number(el.dataset.id),
+      projectName: el.querySelector(".project-name").textContent,
+      icon: el.querySelector(".project-icon").textContent,
+    };
+
+    state.project = _.cloneDeep(projectObj);
+
+    // console.log(state.project);
+  } else {
+    // task
+  }
+};
+
 // Update Project data
 
-export const updateProject = function (project) {
-  const projectToEdit = state.projectsArr.find((pr) => pr.id === project.id);
-  console.log(projectToEdit);
+export const updateProjectName = function (project) {
+  elementToObject(project, "project");
+  const projectToEdit = state.projectsArr.findIndex(
+    (el) => el.id === state.project.id
+  );
+  state.projectsArr[projectToEdit] = state.project;
+  checkState();
 };
 
 // TEST REASONS ONLY
 
 export const devFun = function () {
+  checkState();
+};
+
+const checkState = function () {
   console.log(state);
 };
