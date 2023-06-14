@@ -99,6 +99,10 @@ Deafult: 9px
   box-sizing: border-box;
 }
 
+*[contenteditable="true"] {
+  outline: none;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   color: #fff;
@@ -234,6 +238,7 @@ button {
 .app {
   display: grid;
   grid-template-columns: min-content 1fr 1fr;
+  height: 100vh;
 }
 
 /* //////////////// */
@@ -295,6 +300,7 @@ button {
 
 .panel {
   background-color: var(--background);
+  overflow-y: auto;
 }
 
 .main-panel {
@@ -329,6 +335,31 @@ button {
   justify-content: space-between;
   font-size: 1.8rem;
 }
+
+
+.project-name {
+  display: flex;
+}
+
+
+/* Name changing protip */
+/* .project-name:focus::after, .project-name:focus::before {
+  margin: 0 1rem;
+  content: "Click Enter Key to save";
+  opacity: 0.2;
+  transition: 0.2s;
+}
+
+.project-name:focus::before {
+  opacity: 0;
+} */
+
+.project-name[contentEditable=true]:empty:before {
+  content: "Project with no name";
+  opacity: 0.5;
+}
+
+
 
 .project-tasks, .project-tasks-completed {
   margin-top: 2rem;
