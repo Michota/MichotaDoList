@@ -3,7 +3,6 @@ import View from "./view.js";
 class NewProject extends View {
   _data;
   _parentElement = document.querySelector(".projects-container");
-  _focusedElement = ".project-name";
   _buttons = ".option-buttons";
   _buttonToFocus = ".button_start_new_project";
 
@@ -67,11 +66,6 @@ class NewProject extends View {
       `,
     };
   }
-
-  // makeItEditable() {
-  //   const projects = [...document.querySelectorAll(".project")];
-  //   // console.log(projects);
-  // }
 }
 
 export default new NewProject();

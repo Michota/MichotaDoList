@@ -38,7 +38,6 @@ export default class View {
   }
 
   focusElement(element, specified = this._focusedElement) {
-    console.log(this);
     element = element.querySelector(specified);
     if (element) {
       element.focus();
@@ -57,6 +56,7 @@ export default class View {
 
   // #TODO: Save on lostfocus/clicking on other things on page...
   editInput(inputField) {
+    this._data = inputField;
     const wasEnterPressed = function (ev) {
       if (ev.code === "Enter" || ev.type === "focusout") {
         ev.preventDefault(); // Disable line-break

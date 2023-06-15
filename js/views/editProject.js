@@ -1,13 +1,10 @@
 import View from "./view.js";
 
-class editProject extends View {
+class EditProject extends View {
   _data;
-  _parentElement = document.querySelector(".projects-container");
-  _projectsArr = [];
-
-  clickToEdit() {
-    const titleEl = document.querySelector(".project-name");
-  }
+  _focusedElement = ".project-name";
+  // FIXME: probably wrong parentelement selected
+  _parentElement = this._data;
 }
 
-export default new editProject();
+export default new EditProject();

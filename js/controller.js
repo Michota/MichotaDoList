@@ -1,20 +1,18 @@
 import * as model from "./model.js";
 import newProject from "./views/newProject.js";
+import editProject from "./views/editProject.js";
 
 const controlNewProject = function () {
   const elementHTML = newProject.generateMarkup(model.createProject());
-  newProject.focusElement(
-    newProject.addElementHTML(elementHTML)
-    // ".project-name"
-  );
+  // Make New Project Editable
+  editProject.focusElement(newProject.addElementHTML(elementHTML));
 
   // Select newlycreated project
   const newlyCreatedProject = document.querySelector(
     `[data-id="${elementHTML.data.id}"]`
   );
   // Make focused project-name listened, so after clicking "ENTER" data will be saved
-  newProject.editInput(newlyCreatedProject);
-  console.log(newlyCreatedProject);
+  editProject.editInput(newlyCreatedProject);
 };
 
 const controlUpdateProjectName = function (data) {
@@ -29,7 +27,7 @@ const controlUpdateTaskName = function (data) {
 
 const init = function () {
   newProject.createNewElement(controlNewProject);
-  newProject.addUpdateHandler(controlUpdateProjectName);
+  editProject.addUpdateHandler(controlUpdateProjectName);
   // NewProject.selectElement(".projects-container", ".project-name");
 };
 
