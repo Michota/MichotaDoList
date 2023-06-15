@@ -3,18 +3,9 @@ import View from "./view.js";
 class NewProject extends View {
   _data;
   _parentElement = document.querySelector(".projects-container");
-
-  startNewProject(handler) {
-    // TODO: Make this in VIEW
-    const buttons = document.querySelector(".option-buttons");
-
-    buttons.addEventListener("click", function (e) {
-      e.preventDefault();
-      const btn = e.target.closest(".button_start_new_project");
-      if (!btn) return;
-      handler();
-    });
-  }
+  _focusedElement = ".project-name";
+  _buttons = ".option-buttons";
+  _buttonToFocus = ".button_start_new_project";
 
   generateMarkup(recivedData) {
     this._data = recivedData;

@@ -1,22 +1,13 @@
 import * as model from "./model.js";
-// import newProject from "./views/newProject.js";
-// import * as view from "./views/view.js";
 import newProject from "./views/newProject.js";
 
 const controlNewProject = function () {
   const elementHTML = newProject.generateMarkup(model.createProject());
   newProject.focusElement(
-    newProject.addElementHTML(elementHTML),
-    ".project-name"
+    newProject.addElementHTML(elementHTML)
+    // ".project-name"
   );
-  // .addEventListener(
-  //   "focus",
-  //   function (e) {
-  //     console.log(e.target);
-  //     newProject.editInput(this);
-  //   },
-  //   { once: true }
-  // );
+
   // Select newlycreated project
   const newlyCreatedProject = document.querySelector(
     `[data-id="${elementHTML.data.id}"]`
@@ -31,8 +22,13 @@ const controlUpdateProjectName = function (data) {
   model.updateProjectName(data);
 };
 
+const controlUpdateTaskName = function (data) {
+  // console.log(data);
+  model.updateTaskName(data);
+};
+
 const init = function () {
-  newProject.startNewProject(controlNewProject);
+  newProject.createNewElement(controlNewProject);
   newProject.addUpdateHandler(controlUpdateProjectName);
   // NewProject.selectElement(".projects-container", ".project-name");
 };

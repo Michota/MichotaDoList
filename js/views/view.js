@@ -1,7 +1,9 @@
 export default class View {
   _data;
-  _editableElement;
   _handler;
+  _focusedElement;
+  _buttons;
+  _buttonToFocus;
 
   addUpdateHandler(h) {
     this._handler = h;
@@ -24,7 +26,19 @@ export default class View {
     return document.querySelector(`[data-id="${element.data.id}"]`);
   }
 
-  focusElement(element, specified) {
+  createNewElement(handler, button = this._buttonToFocus) {
+    const buttons = document.querySelector(this._buttons);
+
+    buttons.addEventListener("click", function (e) {
+      e.preventDefault();
+      const btn = e.target.closest(button);
+      if (!btn) return;
+      handler();
+    });
+  }
+
+  focusElement(element, specified = this._focusedElement) {
+    console.log(this);
     element = element.querySelector(specified);
     if (element) {
       element.focus();
@@ -45,37 +59,15 @@ export default class View {
   editInput(inputField) {
     const wasEnterPressed = function (ev) {
       if (ev.code === "Enter" || ev.type === "focusout") {
-        // console.log(ev, ev.target);
         ev.preventDefault(); // Disable line-break
         ev.target.blur(); // Lose focus
       }
       const output = ev.target;
       this._handler(output);
     };
-    // ["keydown", "focus", "click"].forEach((ev) => {
-    //   console.log("chuj");
-    //   inputField.addEventListener(ev, wasEnterPressed.bind(this), );
-    // });
+
     ["keydown", "focusout"].forEach((ev) =>
       inputField.addEventListener(ev, wasEnterPressed.bind(this))
     );
-    // inputField.addEventListener("keydown", wasEnterPressed.bind(this), {});
-    // inputField.addEventListener("focusout", wasEnterPressed.bind(this), {});
   }
-
-  // Return element (el) if its in container ()
-  // selectElement = function (elContainer, el) {
-  // FIXME: it adds a new eventlistener with every click...
-  // const returnClicked = function (ev) {
-  //   // slice(1) is to remove dot from class name
-  //   if (ev.target.classList.contains(el.slice(1))) {
-  //     this.editInput(ev.target);
-  //   }
-  // };
-  // // If element is clicked, then return it
-  // document
-  //   .querySelector(elContainer)
-  //   // .addEventListener("click", returnClicked.bind(this));
-  //   .addEventListener("click", returnClicked.bind(this));
-  // };
 }
