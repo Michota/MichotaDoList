@@ -39,7 +39,6 @@ export const createTask = function (projectId) {
     taskName: "",
     description: "",
   };
-  console.log(project);
 
   project.tasks.push(task);
 
@@ -125,33 +124,10 @@ const checkIdUnique = function (arr, id) {
   // if ID is unique, then return TRUE
 };
 
-const elementToObject = function (element, type) {
-  if (type === "project") {
-    const el = element.closest(".project");
-
-    const projectObj = {
-      id: Number(el.dataset.id),
-      projectName: el.querySelector(".project-name").textContent,
-      icon: el.querySelector(".project-icon").textContent,
-    };
-
-    state.project = _.cloneDeep(projectObj);
-
-    // console.log(state.project);
-  } else {
-    // task
-  }
-};
-
-// Update Project data
-
-export const updateProjectName = function (project) {
-  elementToObject(project, "project");
-  const projectToEdit = state.projectsArr.findIndex(
-    (el) => el.id === state.project.id
-  );
-  state.projectsArr[projectToEdit] = state.project;
-  checkState();
+export const updateProjectName = function (projectNameEl) {
+  const projectId = Number(projectNameEl.closest(".project").dataset.id);
+  const project = findProject(projectId, "object");
+  project.projectName = projectNameEl.textContent;
 };
 
 // TEST REASONS ONLY
@@ -162,11 +138,9 @@ const checkState = function () {
 
 // --------------------- REMOVE LATER
 const devBtn = document.querySelector(".logout-btn");
-console.log(devBtn);
 devBtn.addEventListener("click", function () {
   console.log("working");
 });
-// console.log(findTask(6666));
 export const devFun = function () {
   checkState();
 };
