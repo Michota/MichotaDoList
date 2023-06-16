@@ -12,21 +12,7 @@ export const state = {
     taskName: "",
     description: "",
   },
-  projectsArr: [
-    {
-      id: 2137,
-      projectName: "papiez",
-      icon: "terminal",
-      tasks: [
-        {
-          id: 6666,
-          taskName: "demon",
-          description: "demoniczny papiez",
-        },
-      ],
-    },
-    { id: 1000, projectName: "test", icon: "terminal", tasks: [] },
-  ],
+  projectsArr: [],
 };
 
 // Create project object
@@ -45,40 +31,55 @@ export const createProject = function (nameInput = "", iconInput = "terminal") {
 };
 
 // Create task object
-export const createTask = function (nameInput = "") {
+export const createTask = function (projectId) {
+  const project = findProject(projectId, "object");
+  if (typeof project !== "object") return;
   const task = {
     id: createId(),
-    taskName: nameInput,
+    taskName: "",
     description: "",
   };
-  // Save project to array
-  state.projectsArr.push(task);
-  // checkState();
-  if (-1) return "Nothing was found";
-  else return project;
+  console.log(project);
+
+  project.tasks.push(task);
+
+  return task;
 };
 
-const editTask = function (taskId) {
+// Edit task name and description, then return THE SAME task object
+const editTask = function (taskId, data) {
   const task = findTask(taskId);
+
+  task.taskName = data.taskName;
+  task.description = data.description;
+
+  return task;
 };
 
-// Find project (by deafult it retruns project index)
+// Find project (by deafult it retruns project index inside projectArr)
 const findProject = function (projectId, searchType = "index") {
   let projectToFind;
   if (searchType === "index") {
     projectToFind = state.projectsArr.findIndex((el) => el.id === projectId);
+  } else if (searchType === "object") {
+    projectToFind = state.projectsArr.find((el) => el.id === projectId);
   }
   if (projectToFind === -1) return "Nothing was found";
   else return projectToFind;
 };
 
-// Find task (if both taskId and projectId were entered, it returns array of objects [task,project])
-const findTask = function (taskId, projectId) {
-  // const tasks = state.projectsArr.map((project) => project.tasks);
+// Find the project by task.id that it is assigned to
+const findProjectOfTask = function (taskId) {
   const project = state.projectsArr.find((project) =>
     project.tasks.find((task) => task.id === taskId)
   );
-  console.log(project.id, projectId);
+  return project;
+};
+
+// Find task (if both taskId and projectId were entered, it returns object with {task,project})
+const findTask = function (taskId, projectId) {
+  const project = findProjectOfTask(taskId);
+
   if (projectId && project.id !== projectId)
     return "This project does not contain this task!";
 
@@ -86,7 +87,7 @@ const findTask = function (taskId, projectId) {
 
   // if projectId is empty, then do not return project that contains this tasks.
   if (task === -1) return "Nothing was found"; // if no task was found
-  if (projectId) return [task, project];
+  if (projectId) return { task, project };
   // return both task and project objects if projectId was entered
   else return task;
 };
