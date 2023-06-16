@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _, { find } from "lodash";
 
 export const state = {
   project: {
@@ -7,8 +7,26 @@ export const state = {
     icon: "",
     tasks: [],
   },
-  task: {},
-  projectsArr: [],
+  task: {
+    id: 0,
+    taskName: "",
+    description: "",
+  },
+  projectsArr: [
+    {
+      id: 2137,
+      projectName: "papiez",
+      icon: "terminal",
+      tasks: [
+        {
+          id: 6666,
+          taskName: "demon",
+          description: "demoniczny papiez",
+        },
+      ],
+    },
+    { id: 1000, projectName: "test", icon: "terminal", tasks: [] },
+  ],
 };
 
 // Create project object
@@ -24,6 +42,56 @@ export const createProject = function (nameInput = "", iconInput = "terminal") {
   state.projectsArr.push(project);
   // checkState();
   return project;
+};
+
+// Create task object
+export const createTask = function (nameInput = "") {
+  const task = {
+    id: createId(),
+    taskName: nameInput,
+    description: "",
+  };
+  // Save project to array
+  state.projectsArr.push(task);
+  // checkState();
+  if (-1) return "Nothing was found";
+  else return project;
+};
+
+const editTaskInProject = function (projectId, TaskID) {
+  const project = state.projectsArr[findProject(projectId)];
+  if (!project) return; // if no project found, then return
+};
+
+// Find project (by deafult it retruns project index)
+const findProject = function (projectId, searchType = "index") {
+  let projectToFind;
+  if (searchType === "index") {
+    projectToFind = state.projectsArr.findIndex((el) => el.id === projectId);
+  }
+  if (projectToFind === -1) return "Nothing was found";
+  else return projectToFind;
+};
+
+const findTask = function (taskId, projectId) {
+  // const tasks = state.projectsArr.map((project) => project.tasks);
+  const project = state.projectsArr.find((project) =>
+    project.tasks.find((task) => task.id === taskId)
+  );
+  console.log(project.id, projectId);
+  if (project.id !== projectId)
+    return "This project does not contain this task!";
+
+  const task = project.tasks.find((task) => task.id === taskId);
+
+  // if projectId is empty, then do not return project that contains this tasks.
+  if (task === -1) return "Nothing was found"; // if no task was found
+  if (projectId)
+    return [
+      task,
+      project,
+    ]; // return both task and project objects if projectId was entered
+  else return task;
 };
 
 // Create new ID
@@ -90,10 +158,18 @@ export const updateProjectName = function (project) {
 
 // TEST REASONS ONLY
 
-export const devFun = function () {
-  checkState();
-};
-
 const checkState = function () {
   console.log(state);
 };
+
+// --------------------- REMOVE LATER
+const devBtn = document.querySelector(".logout-btn");
+console.log(devBtn);
+devBtn.addEventListener("click", function () {
+  console.log("working");
+});
+console.log(findTask(6666, 2127));
+export const devFun = function () {
+  checkState();
+};
+// --------------------- end of REMOVE LATER
