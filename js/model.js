@@ -58,9 +58,8 @@ export const createTask = function (nameInput = "") {
   else return project;
 };
 
-const editTaskInProject = function (projectId, TaskID) {
-  const project = state.projectsArr[findProject(projectId)];
-  if (!project) return; // if no project found, then return
+const editTask = function (taskId) {
+  const task = findTask(taskId);
 };
 
 // Find project (by deafult it retruns project index)
@@ -73,24 +72,22 @@ const findProject = function (projectId, searchType = "index") {
   else return projectToFind;
 };
 
+// Find task (if both taskId and projectId were entered, it returns array of objects [task,project])
 const findTask = function (taskId, projectId) {
   // const tasks = state.projectsArr.map((project) => project.tasks);
   const project = state.projectsArr.find((project) =>
     project.tasks.find((task) => task.id === taskId)
   );
   console.log(project.id, projectId);
-  if (project.id !== projectId)
+  if (projectId && project.id !== projectId)
     return "This project does not contain this task!";
 
   const task = project.tasks.find((task) => task.id === taskId);
 
   // if projectId is empty, then do not return project that contains this tasks.
   if (task === -1) return "Nothing was found"; // if no task was found
-  if (projectId)
-    return [
-      task,
-      project,
-    ]; // return both task and project objects if projectId was entered
+  if (projectId) return [task, project];
+  // return both task and project objects if projectId was entered
   else return task;
 };
 
@@ -168,7 +165,7 @@ console.log(devBtn);
 devBtn.addEventListener("click", function () {
   console.log("working");
 });
-console.log(findTask(6666, 2127));
+// console.log(findTask(6666));
 export const devFun = function () {
   checkState();
 };
