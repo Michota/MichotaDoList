@@ -4,7 +4,17 @@ class NewProject extends View {
   _data;
   _parentElement = document.querySelector(".projects-container");
   _buttons = ".option-buttons";
-  _buttonToFocus = ".button_start_new_project";
+  _buttonStartNewProject = ".button_start_new_project";
+
+  addHandler(handler, button = this._buttonStartNewProject) {
+    const buttons = document.querySelector(this._buttons);
+    buttons.addEventListener("click", function (e) {
+      e.preventDefault();
+      const btn = e.target.closest(button);
+      if (!btn) return;
+      handler();
+    });
+  }
 
   generateMarkup(recivedData) {
     this._data = recivedData;
