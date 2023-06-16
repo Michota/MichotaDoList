@@ -2,8 +2,11 @@ export default class View {
   _data;
   _handler;
   _focusedElement;
-  _buttons;
-  _buttonToFocus;
+  // _buttons;
+  // _buttonToFocus;
+  _buttonsGroup;
+  _button;
+  _parentElement;
 
   addUpdateHandler(h) {
     this._handler = h;
@@ -19,36 +22,37 @@ export default class View {
   }
 
   addElementHTML(element) {
-    this.data = element;
+    this._data = element;
     // Insert Element Markup into chosen _parentElement
+    console.log(this._parentElement);
     this._parentElement.insertAdjacentHTML("beforeend", element.markup);
     // return newly created element
     return document.querySelector(`[data-id="${element.data.id}"]`);
   }
 
-  createNewElement(handler, button = this._buttonToFocus) {
-    const buttons = document.querySelector(this._buttons);
-
-    buttons.addEventListener("click", function (e) {
-      e.preventDefault();
-      const btn = e.target.closest(button);
-      if (!btn) return;
-      handler();
-    });
-  }
-
-  focusElement(element, specified = this._focusedElement) {
-    element = element.querySelector(specified);
-    if (element) {
-      element.focus();
-      const text = element.textContent;
-      element.textContent = "";
-      element.textContent = text;
-    } else {
-      element.focus();
-    }
+  focusElement(element) {
+    // Focus element
+    element.focus();
+    // Make pointer at the begining of the text
+    const text = element.textContent;
+    element.textContent = "";
+    element.textContent = text;
     return element;
   }
+
+  // Focus element and one of his childs
+  // focusElement(element, specified = this._focusedElement) {
+  //   element = element.querySelector(specified);
+  //   if (element) {
+  //     element.focus();
+  //     const text = element.textContent;
+  //     element.textContent = "";
+  //     element.textContent = text;
+  //   } else {
+  //     element.focus();
+  //   }
+  //   return element;
+  // }
 
   renderError(error) {
     console.error(error);
