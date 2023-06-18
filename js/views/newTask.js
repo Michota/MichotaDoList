@@ -16,12 +16,17 @@ class NewTask extends View {
 
   // Add Handler to Add New Task button and return the project where this button is located
   addHandler(handler, element) {
+    const listOfTasks = element.querySelector(".project-tasks");
     this._parentElement = element;
     this._handler = handler;
     const button = this._parentElement.querySelector(this._button);
-    button.addEventListener("click", function (e) {
-      handler(Number(element.dataset.id));
-    });
+    button.addEventListener(
+      "click",
+      function (e) {
+        this._parentElement = listOfTasks;
+        handler(Number(element.dataset.id));
+      }.bind(this)
+    );
   }
 
   generateMarkup(recivedData) {
