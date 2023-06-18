@@ -25,12 +25,12 @@ class NewTask extends View {
   }
 
   generateMarkup(recivedData) {
-    console.log(recivedData);
+    console.log("xD");
     this._data = recivedData;
     return {
       data: this._data,
       markup: `
-<li class="task">
+<li class="task" data-id="${recivedData.id}">
                   <button class="checkbox material-symbols-outlined">
                     circle
                   </button>

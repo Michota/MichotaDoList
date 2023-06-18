@@ -21,13 +21,21 @@ export default class View {
     this._parentElement.innerHTML = data;
   }
 
+  // addElementHTML(element) {
+  //   this._data = element;
+  //   // Insert Element Markup into chosen _parentElement
+  //   this._parentElement.insertAdjacentHTML("beforeend", element.markup);
+  //   // return newly created element
+  //   return document.querySelector(`[data-id="${element.data.id}"]`);
+  // }
+
   addElementHTML(element) {
     this._data = element;
     // Insert Element Markup into chosen _parentElement
-    console.log(this._parentElement);
     this._parentElement.insertAdjacentHTML("beforeend", element.markup);
+    const newElement = document.querySelector(`[data-id="${element.data.id}"]`);
     // return newly created element
-    return document.querySelector(`[data-id="${element.data.id}"]`);
+    return newElement;
   }
 
   focusElement(element) {

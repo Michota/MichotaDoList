@@ -19,11 +19,8 @@ const controlNewProject = function () {
 
 const controlNewTask = function (projectId) {
   const elementHTML = newTask.generateMarkup(model.createTask(projectId));
-  console.log(elementHTML);
   const createdTaskEl = newTask.addElementHTML(elementHTML);
-  console.log(createdTaskEl);
-
-  // const taskNameField = createdTaskEl.querySelector(".task-name");
+  const taskNameField = createdTaskEl.querySelector(".task-name");
 };
 
 const controlProjectName = function (nameInput) {
