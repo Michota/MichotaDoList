@@ -25,7 +25,6 @@ class NewTask extends View {
   }
 
   generateMarkup(recivedData) {
-    console.log("xD");
     this._data = recivedData;
     return {
       data: this._data,
