@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "parcel index2.html",
+    "start": "parcel index.html",
     "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist"
   },
   "devDependencies": {

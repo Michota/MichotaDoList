@@ -370,6 +370,13 @@ button {
   gap: 1rem;
 }
 
+.project-tasks-completed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0.8;
+}
+
 
 .show-content > :first-child{
   margin-top: 1rem;
@@ -428,6 +435,7 @@ transition: 0.2s;
   content: "What I have to do?";
   opacity: 0.5;
 }
+
 
 
 

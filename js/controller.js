@@ -1,9 +1,10 @@
 import * as model from "./model.js";
+import { create } from "lodash";
 import newProject from "./views/newProject.js";
 import editProject from "./views/editProject.js";
 import newTask from "./views/newTask.js";
 import editTask from "./views/editTask.js";
-import { create } from "lodash";
+import stateTask from "./views/stateTask.js";
 
 // ============= Projects ============= //
 const controlNewProject = function () {
@@ -53,12 +54,18 @@ const controlStoreTaskName = function (taskNameEl) {
   model.editTask(data.id, data);
 };
 
+const controlTaskMark = function (task) {
+  console.log(task);
+};
+
 // ============= Initialization function ============= //
 
 const init = function () {
   newProject.addHandler(controlNewProject);
   editProject.addUpdateHandler(controlStoreProjectName);
   editTask.addUpdateHandler(controlStoreTaskName);
+  stateTask.checkboxListener();
+  stateTask.addUpdateHandler(controlTaskMark);
   // NewProject.selectElement(".projects-container", ".project-name");
 };
 init();

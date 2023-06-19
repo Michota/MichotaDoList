@@ -38,6 +38,7 @@ export const createTask = function (projectId) {
     id: createId(),
     taskName: "",
     description: "",
+    done: false,
   };
 
   project.tasks.push(task);
@@ -51,6 +52,7 @@ export const editTask = function (taskId, data) {
 
   task.taskName = data.taskName;
   task.description = data.description;
+  task.done = data.done;
 
   return task;
 };
