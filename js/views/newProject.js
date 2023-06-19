@@ -41,17 +41,6 @@ class NewProject extends View {
                   <div class="icon material-symbols-outlined">add</div>Add new
                   Task</button
                 >
-                <li class="task">
-                  <button class="checkbox material-symbols-outlined"
-                    >circle</button
-                  >
-                  <div class="task-text" contenteditable="true"
-                    >Task ABC XYZ</div
-                  >
-                  <button class="task-delete btn icon material-symbols-outlined"
-                    >delete</button
-                  >
-                </li>
               </ul>
 
               <div class="project-tasks-completed show-content">
@@ -64,7 +53,7 @@ class NewProject extends View {
                     <button class="checkbox marked material-symbols-outlined"
                       >circle</button
                     >
-                    <div class="task-text">Task ABC XYZ</div>
+                    <div class="task-text task_text">Task ABC XYZ</div>
                     <button
                       class="task-delete btn icon material-symbols-outlined"
                       >delete</button

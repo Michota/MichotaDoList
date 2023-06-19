@@ -17,11 +17,15 @@ const controlNewProject = function () {
   // Make "Add new Task" Button working in newly created project
   controlNewTaskBtn(projectEl);
   // Make Project Name editable.
-  controlProjectName(nameFieldEl);
+  editProject.editInput(nameFieldEl);
 };
 
-const controlProjectName = function (nameInput) {
-  editProject.editInput(nameInput);
+// const controlEditProjectName = function (nameInput) {
+//   editProject.editInput(nameInput);
+// };
+
+// Store every edit of Project Name
+const controlStoreProjectName = function (nameInput) {
   model.updateProjectName(nameInput, editProject.getProjectId(nameInput));
 };
 
@@ -35,21 +39,26 @@ const controlNewTaskBtn = function (project) {
 
 const controlNewTask = function (projectId) {
   const elementHTML = newTask.generateMarkup(model.createTask(projectId));
-  const createdTaskEl = newTask.addElementHTML(elementHTML);
-  // const taskNameField = createdTaskEl.querySelector(".task-name");
+  const taskEl = newTask.addElementHTML(elementHTML);
+  const taskNameEl = editTask.selectTaskName(taskEl);
+  controlEditTaskName(taskNameEl);
 };
 
-const controlEditTask = function (arg) {
-  // #TODO:
-  console.log(arg);
+const controlEditTaskName = function (taskNameEl) {
+  editTask.editInput(taskNameEl);
+};
+
+const controlStoreTaskName = function (taskNameEl) {
+  const data = editTask.getTaskData(taskNameEl);
+  model.editTask(data.id, data);
 };
 
 // ============= Initialization function ============= //
 
 const init = function () {
   newProject.addHandler(controlNewProject);
-  editProject.addUpdateHandler(controlProjectName);
-  editTask.addUpdateHandler(controlEditTask);
+  editProject.addUpdateHandler(controlStoreProjectName);
+  editTask.addUpdateHandler(controlStoreTaskName);
   // NewProject.selectElement(".projects-container", ".project-name");
 };
 init();

@@ -33,9 +33,7 @@ class NewTask extends View {
                   <button class="checkbox material-symbols-outlined">
                     circle
                   </button>
-                  <div class="task-text" contenteditable="true">
-                    Task ABC XYZ
-                  </div>
+                  <div class="task-text task_text" contenteditable="true"></div>
                   <button
                     class="task-delete btn icon material-symbols-outlined"
                   >

@@ -361,8 +361,6 @@ button {
   opacity: 0.5;
 }
 
-
-
 .project-tasks, .project-tasks-completed {
   margin-top: 2rem;
   padding: 0 2rem;
@@ -371,6 +369,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
+
 
 .show-content > :first-child{
   margin-top: 1rem;
@@ -423,6 +422,15 @@ transition: 0.2s;
   background-color: rgba(var(--highlight-color), 0.5);
   box-shadow: var(--neon-box);
 }
+
+.task-text[contentEditable=true]:empty::before{
+  cursor: pointer;
+  content: "What I have to do?";
+  opacity: 0.5;
+}
+
+
+
 
 
 .project-tasks-completed {

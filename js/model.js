@@ -46,7 +46,7 @@ export const createTask = function (projectId) {
 };
 
 // Edit task name and description, then return THE SAME task object
-const editTask = function (taskId, data) {
+export const editTask = function (taskId, data) {
   const task = findTask(taskId);
 
   task.taskName = data.taskName;
@@ -78,7 +78,6 @@ const findProjectOfTask = function (taskId) {
 // Find task (if both taskId and projectId were entered, it returns object with {task,project})
 const findTask = function (taskId, projectId) {
   const project = findProjectOfTask(taskId);
-
   if (projectId && project.id !== projectId)
     return "This project does not contain this task!";
 

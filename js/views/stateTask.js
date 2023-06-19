@@ -1,6 +1,6 @@
 import View from "./view.js";
 
-class EditTask extends View {
+class stateTask extends View {
   _data;
   _parentElement = ".task_text";
   _taskNameEl = ".task_text";
@@ -15,13 +15,10 @@ class EditTask extends View {
     return Number(taskEl.dataset.id);
   }
 
-  getTaskData = function (element) {
-    const data = {
-      id: this.getTaskId(element),
-      taskName: element.closest(this._taskNameEl).textContent,
-    };
+  changeStatus = function (element) {
+    const data = {};
     return data;
   };
 }
 
-export default new EditTask();
+export default new stateTask();
