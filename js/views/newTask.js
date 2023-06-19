@@ -3,20 +3,15 @@ import View from "./view.js";
 
 class NewTask extends View {
   _data;
-  _parentElement = ".project-tasks";
-  _buttonToFocus = ".button_add_new_task";
   _handler;
+  _parentElement;
+  _tasksList = ".project-tasks";
+  _buttonToFocus = ".button_add_new_task";
   _button = ".button_add_new_task";
-
-  // addHandler(project, handler) {
-  //   this._handler = handler;
-  //   const btn = project.querySelector(this._buttonToFocus);
-  //   btn.addEventListener("click", this._handler.bind(this));
-  // }
 
   // Add Handler to Add New Task button and return the project where this button is located
   addHandler(handler, element) {
-    const listOfTasks = element.querySelector(".project-tasks");
+    const listOfTasks = element.querySelector(this._tasksList);
     this._parentElement = element;
     this._handler = handler;
     const button = this._parentElement.querySelector(this._button);
