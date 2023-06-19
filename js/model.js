@@ -26,7 +26,7 @@ export const createProject = function (nameInput = "", iconInput = "terminal") {
   };
   // Save project to array
   state.projectsArr.push(project);
-  // checkState();
+  checkState();
   return project;
 };
 
@@ -124,8 +124,7 @@ const checkIdUnique = function (arr, id) {
   // if ID is unique, then return TRUE
 };
 
-export const updateProjectName = function (projectNameEl) {
-  const projectId = Number(projectNameEl.closest(".project").dataset.id);
+export const updateProjectName = function (projectNameEl, projectId) {
   const project = findProject(projectId, "object");
   project.projectName = projectNameEl.textContent;
 };

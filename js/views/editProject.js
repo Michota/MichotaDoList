@@ -2,12 +2,16 @@ import View from "./view.js";
 
 class EditProject extends View {
   _data;
-  _focusedElement = ".project-name";
-  // FIXME: probably wrong parentelement selected
-  _parentElement = this._data;
+  _parentElement = ".project-name";
 
-  test() {
-    console.log(this._data);
+  selectProjectName(projectEl) {
+    const projectNameEl = projectEl.querySelector(this._parentElement);
+    return projectNameEl;
+  }
+
+  getProjectId(project) {
+    const projectEl = project.closest(".project");
+    return Number(projectEl.dataset.id);
   }
 }
 

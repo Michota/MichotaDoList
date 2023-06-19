@@ -48,25 +48,10 @@ export default class View {
     return element;
   }
 
-  // Focus element and one of his childs
-  // focusElement(element, specified = this._focusedElement) {
-  //   element = element.querySelector(specified);
-  //   if (element) {
-  //     element.focus();
-  //     const text = element.textContent;
-  //     element.textContent = "";
-  //     element.textContent = text;
-  //   } else {
-  //     element.focus();
-  //   }
-  //   return element;
-  // }
-
   renderError(error) {
     console.error(error);
   }
 
-  // #TODO: Save on lostfocus/clicking on other things on page...
   editInput(inputField) {
     this._data = inputField;
     const wasEnterPressed = function (ev) {
