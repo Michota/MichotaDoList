@@ -49,13 +49,12 @@ const controlEditTaskName = function (taskNameEl) {
   editTask.editInput(taskNameEl);
 };
 
-const controlStoreTaskName = function (taskNameEl) {
+const controlStoreTaskData = function (taskNameEl) {
   const data = editTask.getTaskData(taskNameEl);
   model.editTask(data.id, data);
 };
 
 const controlTaskMark = function (task) {
-  console.log(task);
   const data = editTask.getTaskData(task);
   model.editTask(data.id, data);
 };
@@ -65,9 +64,9 @@ const controlTaskMark = function (task) {
 const init = function () {
   newProject.addHandler(controlNewProject);
   editProject.addUpdateHandler(controlStoreProjectName);
-  editTask.addUpdateHandler(controlStoreTaskName);
+  editTask.addUpdateHandler(controlStoreTaskData);
   stateTask.checkboxListener();
-  stateTask.addUpdateHandler(controlTaskMark);
+  stateTask.addUpdateHandler(controlStoreTaskData);
   // NewProject.selectElement(".projects-container", ".project-name");
 };
 init();

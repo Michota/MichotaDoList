@@ -27,7 +27,7 @@ class stateTask extends View {
     );
   }
 
-  // FIXME:
+  // FIXME: SPAGHETTI CODE (EVERYTHING IS VERY COMPLICATED, but it works)
   toggleTaskCheckbox(checkboxElement) {
     // Marking/Unmarking Checkbox as done
     checkboxElement.classList.toggle("marked");
@@ -39,14 +39,23 @@ class stateTask extends View {
       `.${this._listCompletedEl}`
     );
     const addNewTask = projectElement.querySelector(`.${this._addNewTaskBtn}`);
+    let newTask;
 
     if (checkboxElement.classList.contains(this._markedCheckbox)) {
       completedList.insertAdjacentHTML("afterbegin", taskElement.outerHTML);
+      newTask = completedList.querySelector(
+        `[data-id='${taskElement.dataset.id}']`
+      );
+      this.editInput(newTask.querySelector(`.${this._taskNameEl}`));
     } else {
-      console.log("y");
       addNewTask.insertAdjacentHTML("afterend", taskElement.outerHTML);
+      newTask = listElement.querySelector(
+        `[data-id='${taskElement.dataset.id}']`
+      );
+      this.editInput(newTask.querySelector(`.${this._taskNameEl}`));
     }
     taskElement.outerHTML = "";
+    this._handler(newTask);
   }
 }
 
