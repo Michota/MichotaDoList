@@ -139,7 +139,7 @@ const checkState = function () {
 // --------------------- REMOVE LATER
 const devBtn = document.querySelector(".logout-btn");
 devBtn.addEventListener("click", function () {
-  console.log("working");
+  console.log("dev button clicked");
 });
 export const devFun = function () {
   checkState();
