@@ -4,12 +4,14 @@ import View from "./view.js";
 class stateTask extends View {
   _data;
 
-  _parentElement = ".project-tasks";
-  _parentElementCompleted = ".project-tasks-completed-list";
+  _listEl = "project-tasks";
+  _listCompletedEl = "project-tasks-completed-list";
   _taskEl = "task";
   _taskNameEl = "task_text";
   _checkbox = "checkbox";
   _markedCheckbox = "marked";
+  _project = "project";
+  _addNewTaskBtn = "button_add_new_task";
   _handler;
 
   checkboxListener() {
@@ -19,27 +21,32 @@ class stateTask extends View {
       function (e) {
         if (e.target.classList.contains(`${this._checkbox}`)) {
           e.preventDefault();
-          this.toggleTask(e.target);
+          this.toggleTaskCheckbox(e.target);
         } else return;
       }.bind(this)
     );
   }
 
-  toggleTask(checkboxEl) {
-    const tasksListEl = checkboxEl.closest(this._parentElement);
-    console.log(tasksListEl);
-    const tasksListCompletedEl = tasksListEl.parentElement.querySelector(
-      this._parentElementCompleted
+  // FIXME:
+  toggleTaskCheckbox(checkboxElement) {
+    // Marking/Unmarking Checkbox as done
+    checkboxElement.classList.toggle("marked");
+    // Selecting elements inside project
+    const projectElement = checkboxElement.closest(`.${this._project}`);
+    const taskElement = checkboxElement.closest(`.${this._taskEl}`);
+    const listElement = projectElement.querySelector(`.${this._listEl}`);
+    const completedList = projectElement.querySelector(
+      `.${this._listCompletedEl}`
     );
-    console.log(tasksListCompletedEl);
+    const addNewTask = projectElement.querySelector(`.${this._addNewTaskBtn}`);
 
-    const taskEl = checkboxEl.closest(`.${this._taskEl}`);
-    checkboxEl.classList.toggle(`${this._markedCheckbox}`);
-    this._handler(taskEl);
-    if (taskEl.parentElement === tasksListEl) {
-      tasksListCompletedEl.insertAdjacentHTML("afterbegin", taskEl.outerHTML);
-      taskEl.outerHTML = "";
+    if (checkboxElement.classList.contains(this._markedCheckbox)) {
+      completedList.insertAdjacentHTML("afterbegin", taskElement.outerHTML);
+    } else {
+      console.log("y");
+      addNewTask.insertAdjacentHTML("afterend", taskElement.outerHTML);
     }
+    taskElement.outerHTML = "";
   }
 }
 

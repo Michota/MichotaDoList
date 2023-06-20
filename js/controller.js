@@ -56,6 +56,8 @@ const controlStoreTaskName = function (taskNameEl) {
 
 const controlTaskMark = function (task) {
   console.log(task);
+  const data = editTask.getTaskData(task);
+  model.editTask(data.id, data);
 };
 
 // ============= Initialization function ============= //

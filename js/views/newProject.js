@@ -49,16 +49,7 @@ class NewProject extends View {
                   >Completed Tasks</button
                 >
                 <ul class="project-tasks-completed-list">
-                  <li class="task completed">
-                    <button class="checkbox marked material-symbols-outlined"
-                      >circle</button
-                    >
-                    <div class="task-text task_text">Task ABC XYZ</div>
-                    <button
-                      class="task-delete btn icon material-symbols-outlined"
-                      >delete</button
-                    >
-                  </li>
+                  
                 </ul>
               </div>
             </div>
