@@ -6,7 +6,6 @@ class manageContent {
 
   elementVisibility(element, whatToDo = "toggle") {
     this.element = element;
-    console.log(this);
     switch (whatToDo) {
       case "hide":
         element.classList.add("hidden");
@@ -24,13 +23,10 @@ class manageContent {
 
   chooseSubPanel(calledPanel) {
     if (calledPanel === "task-panel" || calledPanel === "task")
-      return `
-    <div class="task-panel"></div>
-    `;
+      return `<div class="task-panel"></div>`;
   }
 
   changePanel(whichPanel = "secondary", innerPanelHTML) {
-    console.log(whichPanel, innerPanelHTML);
     // Which panel to change?
     const chosenPanel =
       whichPanel === "secondary" ? this.secondaryPanel : this.mainPanel;

@@ -6,6 +6,7 @@ import newTask from "./views/newTask.js";
 import editTask from "./views/editTask.js";
 import stateTask from "./views/stateTask.js";
 import manageContent from "./views/manageContent.js";
+import detailsTask from "./views/detailsTask.js";
 
 // ============= Projects ============= //
 const controlNewProject = function () {
@@ -51,10 +52,29 @@ const controlEditTaskName = function (taskNameEl) {
 };
 
 const controlTaskPanel = function (clicked) {
+  // Store clicked task Element
   const clickedTask = clicked.target.closest(".task");
-  manageContent.elementVisibility(manageContent.secondaryPanel, "show");
-  let panel = manageContent.chooseSubPanel("task");
-  manageContent.changePanel("secondary", panel);
+  // Add task-panel to secondary panel
+  manageContent.changePanel(
+    "secondary",
+    manageContent.chooseSubPanel("task-panel")
+  );
+  // Store task panel element
+  // Remove hidden class from Second Panel
+  controlSecondPanel("show");
+  controlTaskDataDetails(clickedTask);
+};
+
+const controlTaskDataDetails = function (task) {
+  const taskPanelEl = manageContent.secondaryPanel.querySelector(".task-panel");
+  detailsTask.changeParentEl(taskPanelEl);
+  const elementHTML = detailsTask.generateMarkup(editTask.getTaskData(task));
+  const taskDetailsEl = detailsTask.addElementHTML(elementHTML);
+  console.log(taskDetailsEl);
+};
+
+const controlSecondPanel = function (whatToDo) {
+  manageContent.elementVisibility(manageContent.secondaryPanel, whatToDo);
 };
 
 const controlStoreTaskData = function (taskNameEl) {
@@ -70,8 +90,8 @@ const init = function () {
   editTask.addUpdateHandler(controlStoreTaskData);
   stateTask.checkboxListener();
   stateTask.addUpdateHandler(controlStoreTaskData);
-  editTask.listenToClass(["task-text", "task"]);
+  // Listen to task clicking, so the event can be used later.
+  editTask.listenToClass(["task-text", "task"], ".projects-container");
   editTask.addListenerHandler(controlTaskPanel);
-  // NewProject.selectElement(".projects-container", ".project-name");
 };
 init();

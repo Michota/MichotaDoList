@@ -26,9 +26,13 @@ export default class View {
     this._parentElement.innerHTML = data;
   }
 
-  listenToClass(listenedClass) {
+  changeParentEl(newEl) {
+    this._parentElement = newEl;
+  }
+
+  listenToClass(listenedClass, whereToListen) {
     console.log(this._parentElement);
-    const listeningSpace = document.querySelector("body");
+    const listeningSpace = document.querySelector(whereToListen);
     listeningSpace.addEventListener(
       "click",
       function (ev) {

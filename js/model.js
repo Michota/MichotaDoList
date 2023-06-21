@@ -57,6 +57,11 @@ export const editTask = function (taskId, data) {
   return task;
 };
 
+export const loadTask = function (taskId) {
+  console.log(findTask(taskId));
+  return findTask(taskId);
+};
+
 // Find project (by deafult it retruns project index inside projectArr)
 const findProject = function (projectId, searchType = "index") {
   let projectToFind;
