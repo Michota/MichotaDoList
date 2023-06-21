@@ -49,13 +49,10 @@ const controlEditTaskName = function (taskNameEl) {
   editTask.editInput(taskNameEl);
 };
 
+const controlTaskDescription = function (task) {};
+
 const controlStoreTaskData = function (taskNameEl) {
   const data = editTask.getTaskData(taskNameEl);
-  model.editTask(data.id, data);
-};
-
-const controlTaskMark = function (task) {
-  const data = editTask.getTaskData(task);
   model.editTask(data.id, data);
 };
 
