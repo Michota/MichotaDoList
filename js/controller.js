@@ -5,6 +5,7 @@ import editProject from "./views/editProject.js";
 import newTask from "./views/newTask.js";
 import editTask from "./views/editTask.js";
 import stateTask from "./views/stateTask.js";
+import manageContent from "./views/manageContent.js";
 
 // ============= Projects ============= //
 const controlNewProject = function () {
@@ -49,7 +50,12 @@ const controlEditTaskName = function (taskNameEl) {
   editTask.editInput(taskNameEl);
 };
 
-const controlTaskDescription = function (task) {};
+const controlTaskPanel = function (clicked) {
+  const clickedTask = clicked.target.closest(".task");
+  manageContent.elementVisibility(manageContent.secondaryPanel, "show");
+  let panel = manageContent.chooseSubPanel("task");
+  manageContent.changePanel("secondary", panel);
+};
 
 const controlStoreTaskData = function (taskNameEl) {
   const data = editTask.getTaskData(taskNameEl);
@@ -64,6 +70,8 @@ const init = function () {
   editTask.addUpdateHandler(controlStoreTaskData);
   stateTask.checkboxListener();
   stateTask.addUpdateHandler(controlStoreTaskData);
+  editTask.listenToClass(["task-text", "task"]);
+  editTask.addListenerHandler(controlTaskPanel);
   // NewProject.selectElement(".projects-container", ".project-name");
 };
 init();
