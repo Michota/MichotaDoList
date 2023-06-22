@@ -31,7 +31,6 @@ export default class View {
   }
 
   listenToClass(listenedClass, whereToListen) {
-    console.log(this._parentElement);
     const listeningSpace = document.querySelector(whereToListen);
     listeningSpace.addEventListener(
       "click",

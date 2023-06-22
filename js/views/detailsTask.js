@@ -30,6 +30,42 @@ class detailsTask extends View {
       `,
     };
   }
+
+  editDesc(inputField) {
+    this._data = inputField;
+    const wasEnterPressed = function (ev) {
+      if (ev.type === "focusout") {
+        ev.preventDefault(); // Disable line-break
+        ev.target.blur(); // Lose focus
+      }
+      const output = ev.target;
+      this._handler(output);
+    };
+
+    ["keydown", "focusout"].forEach((ev) =>
+      inputField.addEventListener(ev, wasEnterPressed.bind(this))
+    );
+  }
+
+  addElementHTML(element, pElement) {
+    this._data = element;
+    // Insert Element Markup into chosen _parentElement
+    this._parentElement.insertAdjacentHTML("beforeend", element.markup);
+    const newElement = pElement.querySelector(`[data-id="${element.data.id}"]`);
+    // return newly created element
+    return newElement;
+  }
+
+  selectAllElements(parentElement = this._parentElement) {
+    return {
+      taskPanel: parentElement.querySelector("task-panel"),
+      task: parentElement.querySelector(".task"),
+      checkbox: parentElement.querySelector(".checkbox"),
+      text: parentElement.querySelector(".task_text"),
+      desc: parentElement.querySelector(".task-desc"),
+      deleteBtn: parentElement.querySelector(".task-delete"),
+    };
+  }
 }
 
 export default new detailsTask();

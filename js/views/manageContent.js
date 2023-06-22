@@ -3,6 +3,7 @@ import View from "./view.js";
 class manageContent {
   mainPanel = document.querySelector(".main-panel");
   secondaryPanel = document.querySelector(".secondary-panel");
+  taskPanel;
 
   elementVisibility(element, whatToDo = "toggle") {
     this.element = element;

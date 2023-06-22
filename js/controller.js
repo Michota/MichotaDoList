@@ -69,8 +69,14 @@ const controlTaskDataDetails = function (task) {
   const taskPanelEl = manageContent.secondaryPanel.querySelector(".task-panel");
   detailsTask.changeParentEl(taskPanelEl);
   const elementHTML = detailsTask.generateMarkup(editTask.getTaskData(task));
-  const taskDetailsEl = detailsTask.addElementHTML(elementHTML);
-  console.log(taskDetailsEl);
+  const taskDetailsEl = detailsTask.addElementHTML(elementHTML, taskPanelEl);
+  const elements = detailsTask.selectAllElements();
+  detailsTask.editInput(elements.text);
+};
+
+const controlHotEdit = function (theOneWhoClicks, theOneToEdit) {
+  if (theOneWhoClicks.parentElement.classList.contains("project-tasks"))
+    console.log(theOneWhoClicks, theOneToEdit);
 };
 
 const controlSecondPanel = function (whatToDo) {
@@ -88,6 +94,7 @@ const init = function () {
   newProject.addHandler(controlNewProject);
   editProject.addUpdateHandler(controlStoreProjectName);
   editTask.addUpdateHandler(controlStoreTaskData);
+  detailsTask.addUpdateHandler(controlStoreTaskData);
   stateTask.checkboxListener();
   stateTask.addUpdateHandler(controlStoreTaskData);
   // Listen to task clicking, so the event can be used later.

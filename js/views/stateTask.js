@@ -15,7 +15,7 @@ class stateTask extends View {
   _handler;
 
   checkboxListener() {
-    const container = document.querySelector(".projects-container");
+    const container = document.querySelector(".app");
     container.addEventListener(
       "click",
       function (e) {
