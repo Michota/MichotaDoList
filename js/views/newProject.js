@@ -43,7 +43,7 @@ class NewProject extends View {
                 >
               </ul>
 
-              <div class="project-tasks-completed show-content">
+              <div class="project-tasks-completed show-content hidden">
                 <button class="full-button btn-completed-task">
                   <div class="icon material-symbols-outlined">expand_more</div
                   >Completed Tasks</button

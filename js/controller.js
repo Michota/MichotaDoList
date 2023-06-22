@@ -110,7 +110,6 @@ const renderProjects = function (loadedProjects) {
 };
 
 const renderTasks = function (project, loadedTasks) {
-  console.log(project.id, loadedTasks);
   loadedTasks.forEach((task) => controlNewTask(project.id, task));
 };
 

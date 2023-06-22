@@ -132,7 +132,7 @@ small,
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 /* Scrollbar */
@@ -395,6 +395,9 @@ button {
   opacity: 0.8;
 }
 
+.project-tasks-completed:first-child {
+background-color: red!important;
+}
 
 .show-content > :first-child{
   margin-top: 1rem;
@@ -464,6 +467,7 @@ transition: 0.2s;
 }
 
 .btn-completed-task {
+  box-shadow: none;
   display: flex;
   align-items: center;
   background-color: transparent;

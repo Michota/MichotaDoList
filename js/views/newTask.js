@@ -25,7 +25,6 @@ class NewTask extends View {
   }
 
   addElementHTML(element, isLoaded = undefined) {
-    console.log(isLoaded);
     this._data = element;
     // Insert Element Markup into chosen _parentElement
     if (isLoaded) {

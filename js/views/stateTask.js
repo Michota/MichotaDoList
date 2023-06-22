@@ -54,8 +54,17 @@ class stateTask extends View {
       );
       this.editInput(newTask.querySelector(`.${this._taskNameEl}`));
     }
+
     taskElement.outerHTML = "";
     this._handler(newTask);
+    this.displayCompleted(completedList);
+  }
+
+  displayCompleted(list) {
+    const parent = list.closest(".project-tasks-completed ");
+    const tasks = list.querySelector(".task");
+    console.log(list, parent, tasks ? true : false);
+    tasks ? parent.classList.remove("hidden") : parent.classList.add("hidden");
   }
 }
 
