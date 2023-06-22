@@ -7,6 +7,11 @@ export default class View {
   _buttonsGroup;
   _button;
   _parentElement;
+  _listenerHandler;
+
+  addListenerHandler(h) {
+    this._listenerHandler = h;
+  }
 
   addUpdateHandler(h) {
     this._handler = h;
@@ -21,13 +26,23 @@ export default class View {
     this._parentElement.innerHTML = data;
   }
 
-  // addElementHTML(element) {
-  //   this._data = element;
-  //   // Insert Element Markup into chosen _parentElement
-  //   this._parentElement.insertAdjacentHTML("beforeend", element.markup);
-  //   // return newly created element
-  //   return document.querySelector(`[data-id="${element.data.id}"]`);
-  // }
+  changeParentEl(newEl) {
+    this._parentElement = newEl;
+  }
+
+  listenToClass(listenedClass, whereToListen) {
+    const listeningSpace = document.querySelector(whereToListen);
+    listeningSpace.addEventListener(
+      "click",
+      function (ev) {
+        listenedClass.forEach((cls) => {
+          if (!ev.target.classList.contains(cls)) return;
+          ev.preventDefault();
+          this._listenerHandler(ev);
+        });
+      }.bind(this)
+    );
+  }
 
   addElementHTML(element) {
     this._data = element;

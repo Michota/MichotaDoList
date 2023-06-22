@@ -5,6 +5,8 @@ import editProject from "./views/editProject.js";
 import newTask from "./views/newTask.js";
 import editTask from "./views/editTask.js";
 import stateTask from "./views/stateTask.js";
+import manageContent from "./views/manageContent.js";
+import detailsTask from "./views/detailsTask.js";
 
 // ============= Projects ============= //
 const controlNewProject = function (loaded = undefined) {
@@ -60,18 +62,44 @@ const controlNewTask = function (projectId, loadedTask = undefined) {
 
 const controlEditTaskName = function (taskNameEl) {
   editTask.editInput(taskNameEl);
-  model.saveProjects();
+};
+
+const controlTaskPanel = function (clicked) {
+  // Store clicked task Element
+  const clickedTask = clicked.target.closest(".task");
+  // Add task-panel to secondary panel
+  manageContent.changePanel(
+    "secondary",
+    manageContent.chooseSubPanel("task-panel")
+  );
+  // Store task panel element
+  // Remove hidden class from Second Panel
+  controlSecondPanel("show");
+  controlTaskDataDetails(clickedTask);
+};
+
+const controlTaskDataDetails = function (task) {
+  const taskPanelEl = manageContent.secondaryPanel.querySelector(".task-panel");
+  detailsTask.changeParentEl(taskPanelEl);
+  const elementHTML = detailsTask.generateMarkup(editTask.getTaskData(task));
+  const taskDetailsEl = detailsTask.addElementHTML(elementHTML, taskPanelEl);
+  const elements = detailsTask.selectAllElements();
+  detailsTask.editInput(elements.text);
+};
+
+const controlHotEdit = function (theOneWhoClicks, theOneToEdit) {
+  if (theOneWhoClicks.parentElement.classList.contains("project-tasks"))
+    console.log(theOneWhoClicks, theOneToEdit);
+};
+
+const controlSecondPanel = function (whatToDo) {
+  manageContent.elementVisibility(manageContent.secondaryPanel, whatToDo);
 };
 
 const controlStoreTaskData = function (taskNameEl) {
   const data = editTask.getTaskData(taskNameEl);
   model.editTask(data.id, data);
   model.saveProjects();
-};
-
-const controlTaskMark = function (task) {
-  const data = editTask.getTaskData(task);
-  model.editTask(data.id, data);
 };
 
 const renderProjects = function (loadedProjects) {
@@ -92,9 +120,12 @@ const init = function () {
   newProject.addHandler(controlNewProject);
   editProject.addUpdateHandler(controlStoreProjectName);
   editTask.addUpdateHandler(controlStoreTaskData);
+  detailsTask.addUpdateHandler(controlStoreTaskData);
   stateTask.checkboxListener();
   stateTask.addUpdateHandler(controlStoreTaskData);
-  // NewProject.selectElement(".projects-container", ".project-name");
+  // Listen to task clicking, so the event can be used later.
+  editTask.listenToClass(["task-text", "task"], ".projects-container");
+  editTask.addListenerHandler(controlTaskPanel);
   renderProjects(model.loadProjects());
 };
 init();

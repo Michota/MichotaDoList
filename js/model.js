@@ -97,7 +97,7 @@ const findProjectOfTask = function (taskId) {
 };
 
 // Find task (if both taskId and projectId were entered, it returns object with {task,project})
-const findTask = function (taskId, projectId) {
+export const findTask = function (taskId, projectId) {
   const project = findProjectOfTask(taskId);
   if (projectId && project.id !== projectId)
     return "This project does not contain this task!";
