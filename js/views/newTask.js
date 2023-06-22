@@ -24,6 +24,22 @@ class NewTask extends View {
     );
   }
 
+  addElementHTML(element, isLoaded = undefined) {
+    console.log(isLoaded);
+    this._data = element;
+    // Insert Element Markup into chosen _parentElement
+    if (isLoaded) {
+      this._parentElement
+        .querySelector(this._tasksList)
+        .insertAdjacentHTML("beforeend", element.markup);
+    } else {
+      this._parentElement.insertAdjacentHTML("beforeend", element.markup);
+    }
+    const newElement = document.querySelector(`[data-id="${element.data.id}"]`);
+    // return newly created element
+    return newElement;
+  }
+
   generateMarkup(recivedData) {
     this._data = recivedData;
     return {
@@ -33,7 +49,7 @@ class NewTask extends View {
                   <button class="checkbox material-symbols-outlined">
                     circle
                   </button>
-                  <div class="task-text task_text" contenteditable="true"></div>
+                  <div class="task-text task_text" contenteditable="true">${recivedData.taskName}</div>
                   <button
                     class="task-delete btn icon material-symbols-outlined"
                   >

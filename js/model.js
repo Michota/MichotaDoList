@@ -16,33 +16,52 @@ export const state = {
 };
 
 // Create project object
-export const createProject = function (nameInput = "", iconInput = "terminal") {
-  const project = {
-    id: createId(),
+export const createProject = function (loadedData) {
+  let project = {};
+  // console.log(loadedData);
+  if (!loadedData) {
+    project.id = createId();
     // TODO: change 'terminal' to icon selected by user
-    icon: iconInput,
-    projectName: nameInput,
-    tasks: [],
-  };
+    project.icon = "terminal";
+    project.projectName = "";
+    project.tasks = [];
+    state.projectsArr.push(project);
+  } else {
+    project.id = loadedData.id;
+    // TODO: change 'terminal' to icon selected by user
+    project.icon = loadedData.icon;
+    project.projectName = loadedData.projectName;
+    project.tasks = loadedData.tasks;
+  }
   // Save project to array
-  state.projectsArr.push(project);
-  checkState();
+  // checkState();
   return project;
 };
 
 // Create task object
-export const createTask = function (projectId) {
-  const project = findProject(projectId, "object");
-  if (typeof project !== "object") return;
-  const task = {
-    id: createId(),
-    taskName: "",
-    description: "",
-    done: false,
-  };
-
-  project.tasks.push(task);
-
+export const createTask = function (projectId, loadTask) {
+  let task;
+  if (!loadTask) {
+    console.log("new");
+    const project = findProject(projectId, "object");
+    if (typeof project !== "object") return;
+    task = {
+      id: createId(),
+      taskName: "",
+      description: "",
+      done: false,
+    };
+    project.tasks.push(task);
+  } else {
+    const project = findProject(projectId, "object");
+    if (typeof project !== "object") return;
+    task = {
+      id: loadTask.id,
+      taskName: loadTask.taskName,
+      description: loadTask.description,
+      done: loadTask.done,
+    };
+  }
   return task;
 };
 
@@ -129,6 +148,25 @@ export const updateProjectName = function (projectNameEl, projectId) {
   const project = findProject(projectId, "object");
   project.projectName = projectNameEl.textContent;
 };
+
+// Save in Local Storage
+
+export const saveProjects = function (projects = state.projectsArr) {
+  localStorage.setItem("projects", JSON.stringify(projects));
+};
+
+export const loadProjects = function () {
+  const projects = JSON.parse(localStorage.getItem("projects"));
+  state.projectsArr = projects === null ? [] : projects;
+  return state.projectsArr;
+};
+
+export const clearProjects = function () {
+  state.projectsArr = [];
+  localStorage.clear();
+};
+
+// Load from LocalStorage
 
 // TEST REASONS ONLY
 
