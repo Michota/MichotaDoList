@@ -81,15 +81,17 @@ const controlTaskPanel = function (clicked) {
 const controlTaskDataDetails = function (task) {
   const taskPanelEl = manageContent.secondaryPanel.querySelector(".task-panel");
   detailsTask.changeParentEl(taskPanelEl);
-  const elementHTML = detailsTask.generateMarkup(editTask.getTaskData(task));
+  // const taskData = editTask.getTaskData(task);
+  // const elementHTML = detailsTask.generateMarkup(taskData);
+  const taskId = editTask.getTaskId(task);
+
+  const taskData = model.findTask(taskId);
+  const elementHTML = detailsTask.generateMarkup(taskData);
+  // console.log(taskData);
   const taskDetailsEl = detailsTask.addElementHTML(elementHTML, taskPanelEl);
   const elements = detailsTask.selectAllElements();
   detailsTask.editInput(elements.text);
-};
-
-const controlHotEdit = function (theOneWhoClicks, theOneToEdit) {
-  if (theOneWhoClicks.parentElement.classList.contains("project-tasks"))
-    console.log(theOneWhoClicks, theOneToEdit);
+  detailsTask.editDesc(elements.desc);
 };
 
 const controlSecondPanel = function (whatToDo) {
@@ -97,10 +99,29 @@ const controlSecondPanel = function (whatToDo) {
 };
 
 const controlStoreTaskData = function (taskNameEl) {
-  const data = editTask.getTaskData(taskNameEl);
+  let data;
+  if (taskNameEl.classList.contains("task-desc")) {
+    data = detailsTask.getTaskData(taskNameEl);
+  } else {
+    data = editTask.getTaskData(taskNameEl, model.findTask);
+  }
+  updateVisibleTaskData(data);
   model.editTask(data.id, data);
   model.saveProjects();
 };
+
+const updateVisibleTaskData = function (data) {
+  if (typeof data === Number)
+    data = {
+      id: data,
+    };
+  const bothTaskEl = document.querySelectorAll(`[data-id="${data.id}"]`);
+  bothTaskEl.forEach(
+    (taskEl) => (taskEl.querySelector(".task_text").textContent = data.taskName)
+  );
+};
+
+// Loading & Rendering
 
 const renderProjects = function (loadedProjects) {
   loadedProjects.forEach((project) => {

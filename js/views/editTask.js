@@ -13,28 +13,26 @@ class EditTask extends View {
     return taskName;
   }
 
+  getTaskData = function (taskTextEl, desc) {
+    const taskEl = taskTextEl.closest(".task");
+    console.log(taskEl);
+    const checkbox = taskTextEl.closest(".task").querySelector(".checkbox");
+
+    const taskData = {
+      checkbox: taskEl.closest(".checkbox"),
+      id: this.getTaskId(taskEl),
+      taskName: taskEl.querySelector(".task_text").textContent,
+      done: checkbox.classList.contains("marked") ? true : false,
+      description: desc(this.getTaskId(taskEl)).description,
+    };
+
+    return taskData;
+  };
+
   getTaskId(element) {
-    const taskEl = element.closest(`.${this._taskEl}`);
+    const taskEl = element.closest(".task");
     return Number(taskEl.dataset.id);
   }
-
-  getTaskData = function (element) {
-    const checkbox = element
-      .closest(`.${this._taskEl}`)
-      .querySelector(`.${this._checkbox}`);
-
-    const data = {
-      id: this.getTaskId(element),
-      taskName: (
-        element.closest(this._taskNameEl) ??
-        element.querySelector(this._taskNameEl)
-      ).textContent,
-      done: checkbox.classList.contains(`${this._markedCheckbox}`)
-        ? true
-        : false,
-    };
-    return data;
-  };
 
   // working
   // getTaskData = function (element) {

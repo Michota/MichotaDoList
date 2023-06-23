@@ -29,6 +29,7 @@ class stateTask extends View {
 
   // FIXME: SPAGHETTI CODE (EVERYTHING IS VERY COMPLICATED, but it works)
   toggleTaskCheckbox(checkboxElement) {
+    console.log(checkboxElement);
     // Marking/Unmarking Checkbox as done
     checkboxElement.classList.toggle("marked");
     // Selecting elements inside project
@@ -63,7 +64,6 @@ class stateTask extends View {
   displayCompleted(list) {
     const parent = list.closest(".project-tasks-completed ");
     const tasks = list.querySelector(".task");
-    console.log(list, parent, tasks ? true : false);
     tasks ? parent.classList.remove("hidden") : parent.classList.add("hidden");
   }
 }

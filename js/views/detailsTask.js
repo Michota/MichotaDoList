@@ -6,6 +6,7 @@ class detailsTask extends View {
   _handler;
   _visibilityHandler;
   _parentElement;
+  _elements;
 
   // #TODO: add project color to taks-panel
 
@@ -16,7 +17,9 @@ class detailsTask extends View {
       data: this._data,
       markup: `
           <div class="task" data-id="${recivedData.id}">
-            <button class="checkbox material-symbols-outlined"> circle </button>
+            <button class="checkbox material-symbols-outlined  ${
+              recivedData.done ? "marked" : ""
+            }" style="visibility: hidden"> circle </button>
             <div class="task-text task_text" contenteditable="true">${
               recivedData.taskName
             }</div>
@@ -29,6 +32,31 @@ class detailsTask extends View {
           }</div>
       `,
     };
+  }
+
+  getTaskData = function (taskTextEl) {
+    console.log(taskTextEl);
+    const panel = taskTextEl.closest(".task-panel");
+    const taskEl = panel.querySelector(".task");
+    const taskNameEl = panel.querySelector(".task-text");
+    const checkbox = panel.querySelector(".checkbox");
+    const description = panel.querySelector(".task-desc");
+    // console.log(panel, taskEl, taskNameEl, checkbox, description);
+
+    const taskData = {
+      checkbox: checkbox,
+      id: this.getTaskId(taskEl),
+      taskName: taskNameEl.textContent,
+      description: description.textContent,
+      done: checkbox.classList.contains("marked") ? true : false,
+    };
+
+    return taskData;
+  };
+
+  getTaskId(element) {
+    const taskEl = element.closest(".task");
+    return Number(taskEl.dataset.id);
   }
 
   editDesc(inputField) {
@@ -57,14 +85,15 @@ class detailsTask extends View {
   }
 
   selectAllElements(parentElement = this._parentElement) {
-    return {
-      taskPanel: parentElement.querySelector("task-panel"),
+    this._elements = {
+      taskPanel: parentElement.closest(".task-panel"),
       task: parentElement.querySelector(".task"),
       checkbox: parentElement.querySelector(".checkbox"),
       text: parentElement.querySelector(".task_text"),
       desc: parentElement.querySelector(".task-desc"),
       deleteBtn: parentElement.querySelector(".task-delete"),
     };
+    return this._elements;
   }
 }
 
