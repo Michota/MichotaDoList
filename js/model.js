@@ -23,7 +23,7 @@ export const createProject = function (loadedData) {
   if (!loadedData) {
     project.id = createId();
     // TODO: change 'terminal' to icon selected by user
-    project.icon = randomIcon().iconName;
+    project.icon = "add_reaction";
     project.projectName = "";
     project.tasks = [];
     project.color = randomColor();
