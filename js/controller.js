@@ -7,6 +7,7 @@ import editTask from "./views/editTask.js";
 import stateTask from "./views/stateTask.js";
 import manageContent from "./views/manageContent.js";
 import detailsTask from "./views/detailsTask.js";
+import deleteTask from "./views/deleteTask.js";
 
 // ============= Projects ============= //
 const controlNewProject = function (loaded = undefined) {
@@ -121,6 +122,19 @@ const updateVisibleTaskData = function (data) {
   );
 };
 
+const controlDeleteTask = function (event) {
+  const data = deleteTask.clearTaskData(event.target);
+  const newData = {
+    id: "",
+    taskName: undefined,
+    description: undefined,
+    done: undefined,
+  };
+  // model.editTask(data.id, newData);
+  model.removeTaskFromProject(data.id);
+  model.saveProjects();
+};
+
 // Loading & Rendering
 
 const renderProjects = function (loadedProjects) {
@@ -146,6 +160,8 @@ const init = function () {
   // Listen to task clicking, so the event can be used later.
   editTask.listenToClass(["task-text", "task"], ".projects-container");
   editTask.addListenerHandler(controlTaskPanel);
+  deleteTask.addListenerHandler(controlDeleteTask);
+  deleteTask.listenToClass(["task-delete"], ".app");
   renderProjects(model.loadProjects());
 };
 init();

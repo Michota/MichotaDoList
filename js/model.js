@@ -65,6 +65,12 @@ export const createTask = function (projectId, loadTask) {
   return task;
 };
 
+export const removeTaskFromProject = function (taskId) {
+  const project = findProjectOfTask(taskId);
+  project.tasks = project.tasks.filter((pTask) => pTask.id !== taskId);
+  // state.projectsArr[findProject(project.id)].tasks.findIndex(el => el.id === taskId)
+};
+
 // Edit task name and description, then return THE SAME task object
 export const editTask = function (taskId, data) {
   const task = findTask(taskId);
