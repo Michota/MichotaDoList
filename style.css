@@ -110,9 +110,13 @@ small,
 }
 
 .deactivated {
-  pointer-events: none;
+  pointer-events:none;
   filter: grayscale(100);
   color: gray;
+}
+
+.btn.deactivated {
+  cursor: not-allowed;
 }
 
 .active {
