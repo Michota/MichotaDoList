@@ -8,7 +8,7 @@ import stateTask from "./views/stateTask.js";
 import manageContent from "./views/manageContent.js";
 import detailsTask from "./views/detailsTask.js";
 import deleteTask from "./views/deleteTask.js";
-import colorProject from "./views/colorProject.js";
+import styleProject from "./views/styleProject.js";
 
 // ============= Projects ============= //
 const controlNewProject = function (loaded = undefined) {
@@ -36,14 +36,36 @@ const controlStoreProjectName = function (nameInput) {
   model.saveProjects();
 };
 
+const controlProjectAppearance = function (ev) {
+  if (ev.target.classList.contains(`${styleProject.pIcon}`)) {
+    controlProjectIcon(ev);
+  }
+  if (ev.target.classList.contains(`${styleProject.pMenu}`)) {
+    controlProjectColor(ev);
+  }
+};
+
 const controlProjectColor = function (ev, color) {
   if (!ev.target) {
-    colorProject.changeColor(ev, color);
+    styleProject.changeColor(ev, color);
   } else {
     console.log();
-    colorProject.changeColor(
+    styleProject.changeColor(
       ev.target,
       model.changeProjectColor(ev.target.closest(".project").dataset.id)
+    );
+    model.saveProjects();
+  }
+};
+
+const controlProjectIcon = function (ev, icon) {
+  if (!ev.target) {
+    styleProject.changeIcon(ev, icon);
+  } else {
+    console.log();
+    styleProject.changeIcon(
+      ev.target,
+      model.changeProjectIcon(ev.target.closest(".project").dataset.id).iconName
     );
     model.saveProjects();
   }
@@ -183,8 +205,11 @@ const init = function () {
   editTask.addListenerHandler(controlTaskPanel);
   deleteTask.addListenerHandler(controlDeleteTask);
   deleteTask.listenToClass(["task-delete"], ".app");
-  colorProject.listenToClass(["project-menu"], ".projects-container");
-  colorProject.addListenerHandler(controlProjectColor);
+  styleProject.listenToClass(
+    ["project-menu", "project-icon"],
+    ".projects-container"
+  );
+  styleProject.addListenerHandler(controlProjectAppearance);
   renderProjects(model.loadProjects());
 };
 init();

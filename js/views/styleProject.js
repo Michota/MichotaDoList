@@ -1,7 +1,9 @@
 import View from "./view.js";
 
-class colorProject extends View {
+class styleProject extends View {
   _data;
+  pIcon = "project-icon";
+  pMenu = "project-menu";
 
   changeColor(target, newColor) {
     // if (ev.target.classList.contains('project')) ev.target
@@ -19,6 +21,17 @@ class colorProject extends View {
     // projectEl.style.borderBottom = `6px solid rgba(${newColor},1)`;
     return projectEl;
   }
+
+  changeIcon(target, newIcon) {
+    let iconEl;
+    if (target.classList.contains("project-icon")) {
+      iconEl = target;
+    } else {
+      iconEl = target.closest(".project-icon");
+    }
+    iconEl.textContent = newIcon;
+    return iconEl;
+  }
 }
 
-export default new colorProject();
+export default new styleProject();

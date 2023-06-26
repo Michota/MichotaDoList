@@ -1,4 +1,5 @@
 import _, { find } from "lodash";
+import iconNames from "../iconNames.json";
 
 export const state = {
   project: {
@@ -22,7 +23,7 @@ export const createProject = function (loadedData) {
   if (!loadedData) {
     project.id = createId();
     // TODO: change 'terminal' to icon selected by user
-    project.icon = "terminal";
+    project.icon = randomIcon().iconName;
     project.projectName = "";
     project.tasks = [];
     project.color = randomColor();
@@ -46,6 +47,13 @@ export const changeProjectColor = function (
   const project = findProject(projectId, "object");
   project.color = newColor;
   return newColor;
+};
+
+export const changeProjectIcon = function (projectId, newIcon = randomIcon()) {
+  console.log(projectId, newIcon.iconName);
+  const project = findProject(projectId, "object");
+  project.icon = newIcon.iconName;
+  return newIcon;
 };
 
 const randomColor = function () {
@@ -195,6 +203,14 @@ export const clearProjects = function () {
   localStorage.clear();
 };
 
+export const randomIcon = function () {
+  const iconIndex = Math.floor(Math.random() * (iconNames.length - 1 + 1) + 1);
+  return {
+    iconName: iconNames[iconIndex],
+    iconIndex: iconIndex,
+  };
+};
+
 // TEST REASONS ONLY
 
 const checkState = function () {
@@ -204,9 +220,11 @@ const checkState = function () {
 // --------------------- REMOVE LATER
 const devBtn = document.querySelector(".logout-btn");
 devBtn.addEventListener("click", function () {
-  console.log("dev button clicked");
+  sicons();
 });
 export const devFun = function () {
   checkState();
 };
 // --------------------- end of REMOVE LATER
+
+randomIcon();
