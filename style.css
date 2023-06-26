@@ -373,6 +373,15 @@ button {
   display: flex;
 }
 
+.project-icon {
+  cursor: pointer;
+  transition: scale 0.2s;
+}
+
+.project-icon:hover {
+  scale: 1.2;
+}
+
 
 .project-name[contentEditable=true]:empty:before {
   content: "Project with no name";
