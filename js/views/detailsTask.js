@@ -17,8 +17,8 @@ class detailsTask extends View {
       data: this._data,
       markup: `
           <div class="task" data-id="${recivedData.id}">
-            <button class="checkbox material-symbols-outlined  ${
-              recivedData.done ? "marked" : ""
+            <button style="visibility: hidden"class="checkbox material-symbols-outlined  ${
+              recivedData.done ? "" : ""
             }" style="visibility: hidden"> circle </button>
             <div class="task-text task_text" contenteditable="true">${
               recivedData.taskName
@@ -35,6 +35,7 @@ class detailsTask extends View {
   }
 
   getTaskData = function (taskTextEl) {
+    console.log(taskTextEl);
     const panel = taskTextEl.closest(".task-panel");
     const taskEl = panel.querySelector(".task");
     const taskNameEl = panel.querySelector(".task-text");
