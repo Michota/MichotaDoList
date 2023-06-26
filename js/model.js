@@ -100,6 +100,13 @@ export const removeTaskFromProject = function (taskId) {
   project.tasks = project.tasks.filter((pTask) => pTask.id !== taskId);
 };
 
+export const removeProject = function (projectId) {
+  const projectIndex = findProject(projectId);
+  state.projectsArr = state.projectsArr
+    .slice(0, projectIndex)
+    .concat(state.projectsArr.slice(projectIndex + 1));
+};
+
 // Edit task name and description, then return THE SAME task object
 export const editTask = function (taskId, data) {
   const task = findTask(taskId);
@@ -219,12 +226,8 @@ const checkState = function () {
 
 // --------------------- REMOVE LATER
 const devBtn = document.querySelector(".logout-btn");
-devBtn.addEventListener("click", function () {
-  sicons();
-});
+devBtn.addEventListener("click", function () {});
 export const devFun = function () {
   checkState();
 };
 // --------------------- end of REMOVE LATER
-
-randomIcon();

@@ -13,6 +13,8 @@ class EditProject extends View {
     const projectEl = project.closest(".project");
     return Number(projectEl.dataset.id);
   }
+
+  deleteProject(project) {}
 }
 
 export default new EditProject();

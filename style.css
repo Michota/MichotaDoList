@@ -41,22 +41,6 @@ Deafult: 400 / 500 / 700
 }
 
 
-/* TODO: lightmode */
-/* 
-:root {
-  --brand-color: 22, 22, 22;
-  --brand: rgba(var(--brand-color), 0.5);
-  --background: #fff9c2;
-  --normal: #000;
-  --highlight-color: 0, 0, 0;
-  --highlight: rgba(var(--highlight-color), 1);
-  --neon-box: 0 0 var(--glow-rate) 0px var(--highlight);
-  --neon-text: var(--highlight) 0px 0px var(--glow-rate);
-  --drop-shadow: black 0px 3px;
-  --logout: rgb(255, 89, 89);
-  --glow-rate: 0;
-  --glass: rgba(0, 0, 0, 0.2);
-} */
 
 /* Material Symbols default */
 .material-symbols-outlined {
@@ -339,6 +323,8 @@ button {
   justify-content: center;
 }
 
+
+
 .project {
   background-color: var(--brand);
   padding: 2rem;
@@ -348,6 +334,7 @@ button {
 }
 
 .project-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   font-size: 2rem;
@@ -370,6 +357,33 @@ button {
 .project-name[contentEditable="true"]:empty:before {
   content: "Project with no name";
   opacity: 0.5;
+}
+
+.menu-popup {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  border-radius: 12px;
+  background-color: var(--background);
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.menu-popup .icon {
+  font-size: 1em;
+}
+
+.menu-popup .btn {
+  gap: 1rem;
+  display: flex;
+}
+
+.menu-popup .btn:hover {
+  color: var(--highlight);
+  text-shadow: var(--neon-text);
 }
 
 .project-tasks,

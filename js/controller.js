@@ -36,13 +36,16 @@ const controlStoreProjectName = function (nameInput) {
   model.saveProjects();
 };
 
-const controlProjectAppearance = function (ev) {
+const controlProjectOptions = function (ev) {
   if (ev.target.classList.contains(`${styleProject.pIcon}`)) {
     controlProjectIcon(ev);
   }
   if (ev.target.classList.contains(`${styleProject.pMenu}`)) {
-    controlProjectColor(ev);
+    styleProject.openMenu(ev.target, controlProjectColor, controlDeleteProject);
   }
+  // if (ev.target.classList.contains(`${styleProject.pMenu}`)) {
+  //   controlProjectColor(ev);
+  // }
 };
 
 const controlProjectColor = function (ev, color) {
@@ -69,6 +72,11 @@ const controlProjectIcon = function (ev, icon) {
     );
     model.saveProjects();
   }
+};
+
+const controlDeleteProject = function (ev, projectEl) {
+  model.removeProject(projectEl.dataset.id);
+  model.saveProjects();
 };
 
 // ============= Tasks ============= //
@@ -209,7 +217,7 @@ const init = function () {
     ["project-menu", "project-icon"],
     ".projects-container"
   );
-  styleProject.addListenerHandler(controlProjectAppearance);
+  styleProject.addListenerHandler(controlProjectOptions);
   renderProjects(model.loadProjects());
 };
 init();
