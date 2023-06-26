@@ -29,7 +29,6 @@ class stateTask extends View {
 
   // FIXME: SPAGHETTI CODE (EVERYTHING IS VERY COMPLICATED, but it works)
   toggleTaskCheckbox(checkboxElement) {
-    console.log(checkboxElement);
     // Marking/Unmarking Checkbox as done
     checkboxElement.classList.toggle("marked");
     // Selecting elements inside project

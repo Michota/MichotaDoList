@@ -4,11 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 
-/* #TODO: 
-  - Add an animation to hamburger-menu icon (in project and tasks)
-
-*/
-
 /* TEMPORARY - #FIXME: */
 
 /* Settings */
@@ -21,49 +16,14 @@
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 
 - FONT WEIGHTS: 
-Deafult: 400 / 500 / 600 / 700
-
-
-- LINE HEIGHTS: 
-Deafult: 1
-Small 1.05
-Medium 1.2
-Paragraph deafult 1.15
-
-- LETTER SPACING 
-3px
--0,5px
-
-
---- 02 COLORS
-- Primary (brand?) : 
-
-- Tints (darker): 
-
-- Shades (lighter): 
-
-- Accents:
-
-- Greys: 
-
-- Special:
-  logout #FF5959;
-
---- 05 SHADOWS
-
-- Glow Neon Box & text
-  box-shadow: 0 0 5px 0px var(--highlight);
-  text-shadow: var(--highlight) 0 0 5px;
-
-
---- 06 Border-Radius
-Deafult: 9px
+Deafult: 400 / 500 / 700
 
 --- 07 Whitespace
 
 */
 
 /* Coolors */
+
 :root {
   --brand-color: 65, 21, 96;
   --brand: rgba(var(--brand-color),0.5);
@@ -72,17 +32,14 @@ Deafult: 9px
   --normal: #fff;
   --highlight-color: 44, 199, 184;
   --highlight: rgba(var(--highlight-color), 1);
-  /* glows etc */
   --neon-box: 0 0 var(--glow-rate) 0px var(--highlight);
   --neon-text: var(--highlight) 0 0 var(--glow-rate);
   --drop-shadow: rgba(0, 0, 0, 0.3) 0 5px 5px;
-  /* --- */
   --logout: rgb(255, 89, 89);
-  /* effects */
   --glow-rate: 10px;
   --glass: background-color: rgba(255, 255, 255, 0.05);
-  /* glows */
 }
+
 
 
 /* Material Symbols default */
@@ -108,7 +65,7 @@ Deafult: 9px
 
 body {
   font-family: "Roboto", sans-serif;
-  color: #fff;
+  color: var(--normal);
   background-color: #000;
   font-size: 1.2rem;
 }
@@ -133,7 +90,22 @@ small,
 }
 
 .hidden {
-  display: none!important;
+  display: none !important;
+}
+
+.deactivated {
+  pointer-events:none;
+  filter: grayscale(100);
+  color: gray;
+}
+
+.btn.deactivated {
+  cursor: not-allowed;
+}
+
+.active {
+  color: var(--highlight);
+  text-shadow: var(--neon-text);
 }
 
 /* Scrollbar */
@@ -146,16 +118,15 @@ small,
   background: none;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--highlight-color),0.2)
+  background: rgba(var(--highlight-color), 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--highlight)
+  background: var(--highlight);
 }
 
 /* _________________ */
 /* General Elements Settings  */
 /* _________________ */
-
 
 .checkbox {
   font-size: 1em;
@@ -199,7 +170,7 @@ small,
 
 .checkbox.marked:hover::after {
   content: "circle";
-  color: var(--highlight)
+  color: var(--highlight);
 }
 
 .icon {
@@ -218,13 +189,13 @@ small,
 /* Grid and Flex classes */
 
 .flex-grow {
-flex: 1;
+  flex: 1;
 }
-
 
 /* Buttons */
 
 .btn {
+  font-weight: 700;
   cursor: pointer;
   user-select: none;
 }
@@ -240,10 +211,10 @@ button {
   color: inherit;
 }
 
-
 /* Buttons with Icons */
 
 .full-button {
+  font-weight: 700;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -259,7 +230,6 @@ button {
 .full-button .icon {
   font-size: 1.2em;
 }
-
 
 /* //////////////// */
 /* App overall */
@@ -344,15 +314,16 @@ button {
   max-height: 95vh;
 }
 
-
 /* Projects Panel */
 
 .option-buttons {
   display: flex;
   gap: 1.6rem;
-  margin: 2rem;  
+  margin: 2rem;
   justify-content: center;
 }
+
+
 
 .project {
   background-color: var(--brand);
@@ -363,13 +334,14 @@ button {
 }
 
 .project-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   font-size: 2rem;
 }
 
-
 .project-name {
+  font-weight: 500;
   display: flex;
 }
 
@@ -382,13 +354,40 @@ button {
   scale: 1.2;
 }
 
-
-.project-name[contentEditable=true]:empty:before {
+.project-name[contentEditable="true"]:empty:before {
   content: "Project with no name";
   opacity: 0.5;
 }
 
-.project-tasks, .project-tasks-completed {
+.menu-popup {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  border-radius: 12px;
+  background-color: var(--background);
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.menu-popup .icon {
+  font-size: 1em;
+}
+
+.menu-popup .btn {
+  gap: 1rem;
+  display: flex;
+}
+
+.menu-popup .btn:hover {
+  color: var(--highlight);
+  text-shadow: var(--neon-text);
+}
+
+.project-tasks,
+.project-tasks-completed {
   margin-top: 2rem;
   padding: 0 2rem;
   border-radius: 1.2rem;
@@ -405,10 +404,10 @@ button {
 }
 
 .project-tasks-completed:first-child {
-background-color: red!important;
+  background-color: red !important;
 }
 
-.show-content > :first-child{
+.show-content > :first-child {
   margin-top: 1rem;
 }
 
@@ -417,22 +416,22 @@ background-color: red!important;
 }
 
 .btn-add-new-task {
-background-color: transparent;
-box-shadow: none;
-color: var(--highlight);
-display: flex;
-align-items: center;
-gap: 1.6rem;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--highlight);
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
 }
 
 .btn-add-new-task {
-background-color: transparent;
-box-shadow: none;
-color: var(--highlight);
-display: flex;
-align-items: center;
-padding: 0 1rem;
-transition: 0.2s;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--highlight);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transition: 0.2s;
 }
 
 .btn-add-new-task:hover {
@@ -445,31 +444,33 @@ transition: 0.2s;
 }
 
 .task {
-display: grid;
-padding: 0 1rem;
-gap: 1.6rem;
-grid-template-columns: min-content 1fr min-content;
-align-items: center;
-font-size: 1.6rem;
-border-radius: 1.2rem;
-transition: 0.2s;
+  font-weight: 500;
+  display: grid;
+  padding: 0 1rem;
+  gap: 1.6rem;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  font-size: 1.6rem;
+  border-radius: 1.2rem;
+  transition: 0.2s;
 }
 
-.task:hover, .task:active {
+.task:hover,
+.task:active {
   background-color: rgba(var(--highlight-color), 0.5);
   box-shadow: var(--neon-box);
 }
 
-.task-text:empty::before{
+.task-text:empty::before {
   cursor: pointer;
   content: "What I have to do?";
   opacity: 0.5;
 }
 
-
 .project-tasks-completed {
   opacity: 0.8;
-  background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  background-color: var(--glass);
   padding: 0 1rem 0 2rem;
   margin-left: 2rem;
   margin-right: 1rem;
@@ -506,7 +507,6 @@ transition: 0.2s;
   text-align: center;
 }
 
-
 .task-desc {
   margin: 2.5rem;
   font-size: 1.6rem;
@@ -516,4 +516,3 @@ transition: 0.2s;
   content: "Here you can describe in more detail what you would like to do.";
   opacity: 0.5;
 }
-

@@ -22,7 +22,8 @@ export const createProject = function (loadedData) {
   let project = {};
   if (!loadedData) {
     project.id = createId();
-    project.icon = randomIcon().iconName;
+    // TODO: change 'terminal' to icon selected by user
+    project.icon = "add_reaction";
     project.projectName = "";
     project.tasks = [];
     project.color = randomColor();
@@ -93,6 +94,13 @@ export const createTask = function (projectId, loadTask) {
 export const removeTaskFromProject = function (taskId) {
   const project = findProjectOfTask(taskId);
   project.tasks = project.tasks.filter((pTask) => pTask.id !== taskId);
+};
+
+export const removeProject = function (projectId) {
+  const projectIndex = findProject(projectId);
+  state.projectsArr = state.projectsArr
+    .slice(0, projectIndex)
+    .concat(state.projectsArr.slice(projectIndex + 1));
 };
 
 // Edit task name and description, then return THE SAME task object
