@@ -26,10 +26,6 @@ const controlNewProject = function (loaded = undefined) {
   editProject.editInput(nameFieldEl);
 };
 
-// const controlEditProjectName = function (nameInput) {
-//   editProject.editInput(nameInput);
-// };
-
 // Store every edit of Project Name
 const controlStoreProjectName = function (nameInput) {
   model.updateProjectName(nameInput, editProject.getProjectId(nameInput));
@@ -74,14 +70,10 @@ const controlProjectIcon = function (ev, icon) {
 // ============= Tasks ============= //
 
 const controlNewTaskBtn = function (project) {
-  // console.log(project);
-  // const newTaskBtn = project.querySelector(".button_add_new_task");
   newTask.addHandler(controlNewTask, project);
 };
 
 const controlNewTask = function (projectId, loadedTask = undefined) {
-  // if (loadedTask)
-
   const elementHTML = newTask.generateMarkup(
     model.createTask(projectId, loadedTask)
   );
@@ -110,7 +102,6 @@ const controlTaskPanel = function (clicked) {
     "secondary",
     manageContent.chooseSubPanel("task-panel")
   );
-  // Store task panel element
   // Remove hidden class from Second Panel
   controlSecondPanel("show");
   controlTaskDataDetails(clickedTask);
@@ -119,13 +110,10 @@ const controlTaskPanel = function (clicked) {
 const controlTaskDataDetails = function (task) {
   const taskPanelEl = manageContent.secondaryPanel.querySelector(".task-panel");
   detailsTask.changeParentEl(taskPanelEl);
-  // const taskData = editTask.getTaskData(task);
-  // const elementHTML = detailsTask.generateMarkup(taskData);
   const taskId = editTask.getTaskId(task);
 
   const taskData = model.findTask(taskId);
   const elementHTML = detailsTask.generateMarkup(taskData);
-  // console.log(taskData);
   const taskDetailsEl = detailsTask.addElementHTML(elementHTML, taskPanelEl);
   const elements = detailsTask.selectAllElements();
   // Listen to changes of name or description

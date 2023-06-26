@@ -22,7 +22,6 @@ export const createProject = function (loadedData) {
   let project = {};
   if (!loadedData) {
     project.id = createId();
-    // TODO: change 'terminal' to icon selected by user
     project.icon = randomIcon().iconName;
     project.projectName = "";
     project.tasks = [];
@@ -30,7 +29,6 @@ export const createProject = function (loadedData) {
     state.projectsArr.push(project);
   } else {
     project.id = loadedData.id;
-    // TODO: change 'terminal' to icon selected by user
     project.icon = loadedData.icon;
     project.projectName = loadedData.projectName;
     project.tasks = loadedData.tasks;
@@ -59,11 +57,8 @@ export const changeProjectIcon = function (projectId, newIcon = randomIcon()) {
 const randomColor = function () {
   let colorarr = [];
   for (let i = 0; i < 3; i++) {
-    // let color = Math.floor(Math.random() * 90);
-    // let color = Math.floor(Math.random() * (90 - 170 + 1) + 90);
     let color = Math.floor(Math.random() * (170 - 90 + 1) + 90);
 
-    // if (color < 20) color = 20;
     colorarr[i] = color;
   }
   return colorarr.join(", ");
@@ -219,12 +214,8 @@ const checkState = function () {
 
 // --------------------- REMOVE LATER
 const devBtn = document.querySelector(".logout-btn");
-devBtn.addEventListener("click", function () {
-  sicons();
-});
+devBtn.addEventListener("click", function () {});
 export const devFun = function () {
   checkState();
 };
 // --------------------- end of REMOVE LATER
-
-randomIcon();

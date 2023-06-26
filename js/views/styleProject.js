@@ -6,7 +6,6 @@ class styleProject extends View {
   pMenu = "project-menu";
 
   changeColor(target, newColor) {
-    // if (ev.target.classList.contains('project')) ev.target
     let projectEl;
 
     if (target.classList.contains("project")) {
@@ -16,9 +15,6 @@ class styleProject extends View {
     }
     projectEl.dataset.color = newColor;
     projectEl.style.backgroundColor = `rgba(${newColor},0.5)`;
-    // Colored border version
-    // projectEl.style.borderRight = `6px solid rgba(${newColor},1)`;
-    // projectEl.style.borderBottom = `6px solid rgba(${newColor},1)`;
     return projectEl;
   }
 
