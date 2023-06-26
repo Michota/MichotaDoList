@@ -15,7 +15,6 @@ class EditTask extends View {
 
   getTaskData = function (taskTextEl, desc) {
     const taskEl = taskTextEl.closest(".task");
-    console.log(taskEl);
     const checkbox = taskTextEl.closest(".task").querySelector(".checkbox");
 
     const taskData = {

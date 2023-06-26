@@ -108,6 +108,7 @@ const controlTaskDataDetails = function (task) {
   const elements = detailsTask.selectAllElements();
   detailsTask.editInput(elements.text);
   detailsTask.editDesc(elements.desc);
+  console.log(elements.taskPanel);
 };
 
 const controlSecondPanel = function (whatToDo) {

@@ -51,8 +51,11 @@ export const changeProjectColor = function (
 const randomColor = function () {
   let colorarr = [];
   for (let i = 0; i < 3; i++) {
-    let color = Math.floor(Math.random() * 90);
-    if (color < 20) color = 20;
+    // let color = Math.floor(Math.random() * 90);
+    // let color = Math.floor(Math.random() * (90 - 170 + 1) + 90);
+    let color = Math.floor(Math.random() * (170 - 90 + 1) + 90);
+
+    // if (color < 20) color = 20;
     colorarr[i] = color;
   }
   return colorarr.join(", ");

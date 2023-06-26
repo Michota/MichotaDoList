@@ -14,6 +14,9 @@ class colorProject extends View {
     }
     projectEl.dataset.color = newColor;
     projectEl.style.backgroundColor = `rgba(${newColor},0.5)`;
+    // Colored border version
+    // projectEl.style.borderRight = `6px solid rgba(${newColor},1)`;
+    // projectEl.style.borderBottom = `6px solid rgba(${newColor},1)`;
     return projectEl;
   }
 }

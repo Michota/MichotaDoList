@@ -95,6 +95,10 @@ class detailsTask extends View {
     };
     return this._elements;
   }
+
+  changeBorderColor() {
+    console.log(this.taskPanel);
+  }
 }
 
 export default new detailsTask();
