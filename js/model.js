@@ -5,6 +5,7 @@ export const state = {
     id: 0,
     projectName: "",
     icon: "",
+    color: "",
     tasks: [],
   },
   task: {
@@ -18,13 +19,13 @@ export const state = {
 // Create project object
 export const createProject = function (loadedData) {
   let project = {};
-  // console.log(loadedData);
   if (!loadedData) {
     project.id = createId();
     // TODO: change 'terminal' to icon selected by user
     project.icon = "terminal";
     project.projectName = "";
     project.tasks = [];
+    project.color = randomColor();
     state.projectsArr.push(project);
   } else {
     project.id = loadedData.id;
@@ -32,10 +33,29 @@ export const createProject = function (loadedData) {
     project.icon = loadedData.icon;
     project.projectName = loadedData.projectName;
     project.tasks = loadedData.tasks;
+    project.color = loadedData.color;
   }
   // Save project to array
-  // checkState();
   return project;
+};
+
+export const changeProjectColor = function (
+  projectId,
+  newColor = randomColor()
+) {
+  const project = findProject(projectId, "object");
+  project.color = newColor;
+  return newColor;
+};
+
+const randomColor = function () {
+  let colorarr = [];
+  for (let i = 0; i < 3; i++) {
+    let color = Math.floor(Math.random() * 90);
+    if (color < 20) color = 20;
+    colorarr[i] = color;
+  }
+  return colorarr.join(", ");
 };
 
 // Create task object
@@ -68,7 +88,6 @@ export const createTask = function (projectId, loadTask) {
 export const removeTaskFromProject = function (taskId) {
   const project = findProjectOfTask(taskId);
   project.tasks = project.tasks.filter((pTask) => pTask.id !== taskId);
-  // state.projectsArr[findProject(project.id)].tasks.findIndex(el => el.id === taskId)
 };
 
 // Edit task name and description, then return THE SAME task object
@@ -84,6 +103,7 @@ export const editTask = function (taskId, data) {
 
 // Find project (by deafult it retruns project index inside projectArr)
 const findProject = function (projectId, searchType = "index") {
+  projectId = Number(projectId);
   let projectToFind;
   if (searchType === "index") {
     projectToFind = state.projectsArr.findIndex((el) => el.id === projectId);
@@ -171,8 +191,6 @@ export const clearProjects = function () {
   state.projectsArr = [];
   localStorage.clear();
 };
-
-// Load from LocalStorage
 
 // TEST REASONS ONLY
 

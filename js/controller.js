@@ -8,6 +8,7 @@ import stateTask from "./views/stateTask.js";
 import manageContent from "./views/manageContent.js";
 import detailsTask from "./views/detailsTask.js";
 import deleteTask from "./views/deleteTask.js";
+import colorProject from "./views/colorProject.js";
 
 // ============= Projects ============= //
 const controlNewProject = function (loaded = undefined) {
@@ -15,6 +16,7 @@ const controlNewProject = function (loaded = undefined) {
   const elementHTML = newProject.generateMarkup(model.createProject(loaded));
   // Make Add new project element to HTML structure
   const projectEl = newProject.addElementHTML(elementHTML);
+  controlProjectColor(projectEl, elementHTML.data.color);
   const nameFieldEl = editProject.selectProjectName(projectEl);
   // Focus name input field of created project, so it can be edited
   editProject.focusElement(nameFieldEl);
@@ -32,6 +34,19 @@ const controlNewProject = function (loaded = undefined) {
 const controlStoreProjectName = function (nameInput) {
   model.updateProjectName(nameInput, editProject.getProjectId(nameInput));
   model.saveProjects();
+};
+
+const controlProjectColor = function (ev, color) {
+  if (!ev.target) {
+    colorProject.changeColor(ev, color);
+  } else {
+    console.log();
+    colorProject.changeColor(
+      ev.target,
+      model.changeProjectColor(ev.target.closest(".project").dataset.id)
+    );
+    model.saveProjects();
+  }
 };
 
 // ============= Tasks ============= //
@@ -162,6 +177,8 @@ const init = function () {
   editTask.addListenerHandler(controlTaskPanel);
   deleteTask.addListenerHandler(controlDeleteTask);
   deleteTask.listenToClass(["task-delete"], ".app");
+  colorProject.listenToClass(["project-menu"], ".projects-container");
+  colorProject.addListenerHandler(controlProjectColor);
   renderProjects(model.loadProjects());
 };
 init();

@@ -21,7 +21,7 @@ class NewProject extends View {
     return {
       data: this._data,
       markup: `
-<div class="project" data-id="${recivedData.id}">
+<div class="project" data-id="${recivedData.id}" data-color="${recivedData.color}">
               <h2 class="project-header">
                 <div class="icon project-icon material-symbols-outlined"
                   >${recivedData.icon}</div

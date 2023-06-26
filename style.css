@@ -67,6 +67,7 @@ Deafult: 9px
 :root {
   --brand-color: 65, 21, 96;
   --brand: rgba(var(--brand-color),0.5);
+  --brand: rgba(65, 21, 96, 0.5);
   --background: #181b25;
   --normal: #fff;
   --highlight-color: 44, 199, 184;
