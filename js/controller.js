@@ -106,9 +106,14 @@ const controlTaskDataDetails = function (task) {
   // console.log(taskData);
   const taskDetailsEl = detailsTask.addElementHTML(elementHTML, taskPanelEl);
   const elements = detailsTask.selectAllElements();
+  // Listen to changes of name or description
   detailsTask.editInput(elements.text);
   detailsTask.editDesc(elements.desc);
-  console.log(elements.taskPanel);
+  // Change Secondary Panel border color to match Tasks project Color
+  detailsTask.changeBorderColor(
+    manageContent.secondaryPanel,
+    model.findProjectOfTask(task.dataset.id).color
+  );
 };
 
 const controlSecondPanel = function (whatToDo) {

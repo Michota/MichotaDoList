@@ -65,7 +65,6 @@ const randomColor = function () {
 export const createTask = function (projectId, loadTask) {
   let task;
   if (!loadTask) {
-    console.log("new");
     const project = findProject(projectId, "object");
     if (typeof project !== "object") return;
     task = {
@@ -118,7 +117,8 @@ const findProject = function (projectId, searchType = "index") {
 };
 
 // Find the project by task.id that it is assigned to
-const findProjectOfTask = function (taskId) {
+export const findProjectOfTask = function (taskId) {
+  taskId = Number(taskId);
   const project = state.projectsArr.find((project) =>
     project.tasks.find((task) => task.id === taskId)
   );

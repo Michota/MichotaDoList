@@ -35,7 +35,6 @@ class detailsTask extends View {
   }
 
   getTaskData = function (taskTextEl) {
-    console.log(taskTextEl);
     const panel = taskTextEl.closest(".task-panel");
     const taskEl = panel.querySelector(".task");
     const taskNameEl = panel.querySelector(".task-text");
@@ -96,8 +95,9 @@ class detailsTask extends View {
     return this._elements;
   }
 
-  changeBorderColor() {
-    console.log(this.taskPanel);
+  changeBorderColor(tPanel, color) {
+    this.taskPanel = tPanel;
+    tPanel.style.border = `5px solid rgba(${color},0.5)`;
   }
 }
 
