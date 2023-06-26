@@ -202,6 +202,7 @@ export const loadProjects = function () {
 };
 
 export const clearProjects = function () {
+  console.log("Local Storage (and so the projects) Cleared!");
   state.projectsArr = [];
   localStorage.clear();
 };
@@ -222,8 +223,11 @@ const checkState = function () {
 
 // --------------------- REMOVE LATER
 const devBtn = document.querySelector(".logout-btn");
-devBtn.addEventListener("click", function () {});
+devBtn.addEventListener("click", function () {
+  devFun();
+});
 export const devFun = function () {
-  checkState();
+  clearProjects();
+  location.reload();
 };
 // --------------------- end of REMOVE LATER

@@ -23,7 +23,7 @@ class detailsTask extends View {
             <div class="task-text task_text" contenteditable="true">${
               recivedData.taskName
             }</div>
-            <button class="task-delete btn icon material-symbols-outlined">
+            <button style="visibility: hidden" class="task-delete btn icon material-symbols-outlined">
               delete
             </button>
           </div>
@@ -35,13 +35,11 @@ class detailsTask extends View {
   }
 
   getTaskData = function (taskTextEl) {
-    console.log(taskTextEl);
     const panel = taskTextEl.closest(".task-panel");
     const taskEl = panel.querySelector(".task");
     const taskNameEl = panel.querySelector(".task-text");
     const checkbox = panel.querySelector(".checkbox");
     const description = panel.querySelector(".task-desc");
-    // console.log(panel, taskEl, taskNameEl, checkbox, description);
 
     const taskData = {
       checkbox: checkbox,

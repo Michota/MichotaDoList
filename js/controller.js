@@ -10,7 +10,7 @@ import detailsTask from "./views/detailsTask.js";
 import deleteTask from "./views/deleteTask.js";
 import styleProject from "./views/styleProject.js";
 
-// ============= Projects ============= //
+// ============= Project Settings ============= //
 const controlNewProject = function (loaded = undefined) {
   // Generate HTML Markup for element and add it to model projects list.
   const elementHTML = newProject.generateMarkup(model.createProject(loaded));
@@ -32,6 +32,7 @@ const controlStoreProjectName = function (nameInput) {
   model.saveProjects();
 };
 
+// Display Project Options
 const controlProjectOptions = function (ev) {
   if (ev.target.classList.contains(`${styleProject.pIcon}`)) {
     controlProjectIcon(ev);
@@ -39,11 +40,9 @@ const controlProjectOptions = function (ev) {
   if (ev.target.classList.contains(`${styleProject.pMenu}`)) {
     styleProject.openMenu(ev.target, controlProjectColor, controlDeleteProject);
   }
-  // if (ev.target.classList.contains(`${styleProject.pMenu}`)) {
-  //   controlProjectColor(ev);
-  // }
 };
 
+// Change project color
 const controlProjectColor = function (ev, color) {
   if (!ev.target) {
     styleProject.changeColor(ev, color);
@@ -57,6 +56,7 @@ const controlProjectColor = function (ev, color) {
   }
 };
 
+// Change project Icon
 const controlProjectIcon = function (ev, icon) {
   if (!ev.target) {
     styleProject.changeIcon(ev, icon);
@@ -70,12 +70,13 @@ const controlProjectIcon = function (ev, icon) {
   }
 };
 
+// Remove Project
 const controlDeleteProject = function (ev, projectEl) {
   model.removeProject(projectEl.dataset.id);
   model.saveProjects();
 };
 
-// ============= Tasks ============= //
+// ============= Tasks Settings ============= //
 
 const controlNewTaskBtn = function (project) {
   newTask.addHandler(controlNewTask, project);
@@ -133,6 +134,8 @@ const controlTaskDataDetails = function (task) {
     model.findProjectOfTask(task.dataset.id).color
   );
 };
+
+// ============= Panels Settings ============= //
 
 const controlSecondPanel = function (whatToDo) {
   manageContent.elementVisibility(manageContent.secondaryPanel, whatToDo);
