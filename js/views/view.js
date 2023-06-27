@@ -67,9 +67,14 @@ export default class View {
     console.error(error);
   }
 
-  editInput(inputField) {
+  editInput(inputField, maxLength = 20) {
     this._data = inputField;
     const wasEnterPressed = function (ev) {
+      // if the maximum size (maxLength) has been exceeded, allow to use Backspace only.
+      if (ev.target.textContent.length > maxLength && ev.code !== "Backspace") {
+        ev.target.blur();
+        return;
+      }
       if (ev.code === "Enter" || ev.type === "focusout") {
         ev.preventDefault(); // Disable line-break
         ev.target.blur(); // Lose focus

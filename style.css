@@ -40,6 +40,22 @@ Deafult: 400 / 500 / 700
   --glass: background-color: rgba(255, 255, 255, 0.05);
 }
 
+input,
+button,
+textarea,
+select {
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+  font-size: inherit;
+  color: inherit;
+  font-weight: 500;
+}
 
 
 /* Material Symbols default */

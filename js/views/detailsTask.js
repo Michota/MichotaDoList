@@ -45,7 +45,9 @@ class detailsTask extends View {
       checkbox: checkbox,
       id: this.getTaskId(taskEl),
       taskName: taskNameEl.textContent,
-      description: description.textContent,
+      // Changed to innerHTML, becasue it saves formatting!
+      // description: description.textContent,
+      description: description.innerHTML,
       done: checkbox.classList.contains("marked") ? true : false,
     };
 
@@ -60,6 +62,7 @@ class detailsTask extends View {
   editDesc(inputField) {
     this._data = inputField;
     const wasEnterPressed = function (ev) {
+      console.log(ev.target.innerHTML);
       if (ev.type === "focusout") {
         ev.preventDefault(); // Disable line-break
         ev.target.blur(); // Lose focus
