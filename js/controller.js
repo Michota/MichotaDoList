@@ -100,7 +100,7 @@ const controlNewTask = function (projectId, loadedTask = undefined) {
 };
 
 const controlEditTaskName = function (taskNameEl) {
-  editTask.editInput(taskNameEl);
+  editTask.editInput(taskNameEl, 30);
 };
 
 const controlTaskPanel = function (clicked) {

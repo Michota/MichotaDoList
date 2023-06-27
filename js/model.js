@@ -49,7 +49,6 @@ export const changeProjectColor = function (
 };
 
 export const changeProjectIcon = function (projectId, newIcon = randomIcon()) {
-  console.log(projectId, newIcon.iconName);
   const project = findProject(projectId, "object");
   project.icon = newIcon.iconName;
   return newIcon;
