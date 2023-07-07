@@ -22,7 +22,7 @@ A simple task list. Created as part of exercises and self-learning HTML, CSS, Ja
 #### Sidebar
 - Does nothing.
 - Logout button wipes the memory
-## [🔗 DEMO](https://michotadolist.netlify.app/) DISCOVERED A BUG (Works poorly on Mozilla Firefox).
+## [🔗 DEMO](https://michotadolist.netlify.app/) (DONT USE ON FIREFOX).
 [Click](https://michotadolist.netlify.app/) to check live version!
 
 ## Screenshots
