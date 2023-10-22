@@ -1,3 +1,10 @@
+# Depreacted
+
+This project is the result of my learning JavaScript. I am aware of the existence of errors and shortcomings.
+The project will not be developed further.
+However, I created its successor - [CheckOff](https://github.com/Michota/checkoff). Check it out now!
+
+<hr>
 
 # MichotaDoList
 
